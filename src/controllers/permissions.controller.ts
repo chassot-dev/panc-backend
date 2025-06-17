@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 
 class PermissionController {
 
-	userFindById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+	findById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
 		try {
 

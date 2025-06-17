@@ -57,11 +57,30 @@ class UserController {
 
 		try {
 
-			const id = req.params.id as string;
+			const id = Number(req.params.id as string);
+			const userId = Number(req.user?.id!)
 
-			const name = await UserService.findById(Number(id));
+			const name = await UserService.findById(userId, id);
 
 			res.status(200).json({ message: 'Usuário Encontrado', name });
+
+		} catch (err) {
+
+			next(err);
+
+		}
+
+	}
+
+	getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+
+		try {
+
+			const userId = Number(req.user!.id)
+
+			const users = await UserService.getAll(userId);
+
+			res.status(200).json({ message: 'Lista de usuários encontrada!', users });
 
 		} catch (err) {
 
