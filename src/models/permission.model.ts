@@ -39,14 +39,44 @@ class Permission {
 
 	}
 
-	static async grantPermissionToUser(userId: number, permissionId: number): Promise<void> {
+	static async grantPermissionToUser(userId: number, permissionName: string): Promise<void> {
+
+		const [rows] = await db.query<RowDataPacket[]>(
+			'SELECT id FROM permissions WHERE name = ? LIMIT 1',
+			[permissionName]
+		);
+
+		if (rows.length === 0) {
+			throw new Error(`Permissão "${permissionName}" não encontrada.`);
+		}
+
+		const permissionId = rows[0].id;
 
 		await db.query(
-			`INSERT INTO users_permissions (user_id, permission_id)
-     		VALUES (?, ?)`,
+			'INSERT INTO users_permissions (user_id, permission_id) VALUES (?, ?)',
 			[userId, permissionId]
 		);
 
+	}
+
+	static async userHasPermission(userId: number, permissionName: string): Promise<boolean> {
+		const [rows] = await db.query<RowDataPacket[]>(`
+			SELECT 
+				1
+			FROM 
+				users_permissions up
+			INNER JOIN 
+				permissions p 
+				ON 
+				up.permission_id = p.id
+			WHERE 
+				up.user_id = ? AND p.name = ?
+			LIMIT 1
+		`,
+			[userId, permissionName]
+		);
+
+		return rows.length > 0;
 	}
 
 	// Getter e Setter para name

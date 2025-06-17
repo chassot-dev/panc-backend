@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { ENV } from '../config/env';
 import { BadRequestError, DuplicatedError, ForbiddenError, NotAllowedError, NotFoundError } from '../utils/errors';
+import Permission from '../models/permission.model';
 
 class UserService {
 
@@ -61,12 +62,14 @@ class UserService {
 			throw new BadRequestError('ID é obrigatório!');
 		}
 
-		if (userId != id) {
-			throw new ForbiddenError('Você não tem permissao para atualizar!')
-		}
-
 		if (!name && !email && !password) {
 			throw new BadRequestError('Informe pelo menos um campo para atualizar!');
+		}
+
+		const hasAdminPermission = await Permission.userHasPermission(userId, 'admin');
+
+		if (userId !== id && !hasAdminPermission) {
+			throw new ForbiddenError('Você não tem permissão para isso!');
 		}
 
 		// Cria a instância de usuário

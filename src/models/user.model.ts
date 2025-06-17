@@ -81,7 +81,7 @@ class User {
 			throw new Error('Usuário ainda não foi criado no banco.');
 		}
 
-		Permission.grantPermissionToUser(this.id, 2);
+		await Permission.grantPermissionToUser(this.id, 'USER');
 
 	}
 
