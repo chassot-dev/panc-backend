@@ -7,6 +7,7 @@ import express, { Application, Request, Response, NextFunction } from 'express';
 import morgan from 'morgan';
 import { patchTables } from './config/setup';
 import userRouter from './routes/user.routes';
+import permissionRouter from './routes/permission.routes';
 import { errorHandler } from './middlewares/error.middleware';
 import { apiKeyMiddleware } from './middlewares/apiKey.middleware';
 
@@ -26,6 +27,7 @@ app.use(apiKeyMiddleware);
 
 // Rotas
 app.use('/user', userRouter);
+app.use('/permission', permissionRouter);
 
 // Tratamento de erro 404
 app.use((req: Request, res: Response, next: NextFunction) => {

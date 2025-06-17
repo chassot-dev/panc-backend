@@ -1,8 +1,9 @@
-import { JwtPayload }  from '../../interfaces/jwt.interface';
-import 'express-serve-static-core';
+import { JwtPayload } from '../../interfaces/jwt.interface'; // ajuste o caminho conforme seu projeto
 
-declare module 'express-serve-static-core' {
-  interface Request {
-    user?: JwtPayload;
+declare global {
+  namespace Express {
+    interface Request {
+      user?: JwtPayload;  // ou o tipo que você usa para armazenar o user no token
+    }
   }
 }
