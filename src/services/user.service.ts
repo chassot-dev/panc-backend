@@ -36,7 +36,7 @@ class UserService {
 
 		const user = await User.searchForEmail(email);
 
-		if(user === null){
+		if (user === null) {
 			throw new NotFoundError('Login incorreto!');
 		}
 
@@ -55,15 +55,48 @@ class UserService {
 
 	}
 
+	async userUpdate(id: number, name: string, email: string, password: string): Promise<string> {
+
+		// Cria a instância de usuário
+		const user = await User.createFromId(id);
+
+		// Verifica se achou o usuário
+		if (user === null) {
+			throw new NotFoundError('Login incorreto!');
+		}
+
+		// Atualiza os campos se forem fornecidos
+		if (name){
+			user.name = name;
+		}
+		if (email){
+			user.email = email;
+		}
+		if (password){
+			await user.setPassword(password);
+		}
+
+		await user.saveOnDB();
+
+		const token = jwt.sign(
+			{ id: user.id, email: user.email },
+			ENV.SECRET,
+			{ expiresIn: '1h' }
+		);
+
+		return token;
+
+	}
+
 	async userFindById(id: number): Promise<string> {
 
-		if(!id){
+		if (!id) {
 			throw new BadRequestError('Informe o id');
 		}
 
 		const user = await User.createFromId(id);
 
-		if (!user){
+		if (!user) {
 			throw new NotFoundError('Não encontramos este usuário');
 		}
 

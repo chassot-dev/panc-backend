@@ -25,7 +25,7 @@ class User {
 
 		const passwordHash = await bcrypt.hash(plainPassword, 10);
 		const user = new User(name, email, passwordHash);
-		const userId = await user.createOnDB();
+		const userId = await user.saveOnDB();
 
 		user._id = userId;
 
@@ -47,13 +47,23 @@ class User {
 		return new User(name, email, password, id);
 	}
 
-	async createOnDB() {
-		const [res] = await db.query<ResultSetHeader>(
-			'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
-			[this._name, this._email, this._password]
-		);
+	async saveOnDB() {
+		let res: ResultSetHeader;
 
-		return res.insertId;
+		if (!this._id) {
+			[res] = await db.query<ResultSetHeader>(
+				'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
+				[this._name, this._email, this._password]
+			);
+			this._id = res.insertId;
+		} else {
+			[res] = await db.query<ResultSetHeader>(
+				'UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?',
+				[this._name, this._email, this._password, this._id]
+			);
+		}
+
+		return this._id;
 	}
 
 	static async searchForEmail(email: string): Promise<User | null> {
@@ -96,11 +106,14 @@ class User {
 		this._email = value;
 	}
 
-	// Getter para senha
-	get senha(): string {
+	// Getter e Setter para senha
+	get password(): string {
 		return this._password;
 	}
 
+	async setPassword(plainPassword: string): Promise<void> {
+		this._password = await bcrypt.hash(plainPassword, 10);
+	}
 }
 
 export default User;

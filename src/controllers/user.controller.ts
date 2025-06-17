@@ -15,7 +15,7 @@ class UserController {
 		} catch (err: any) {
 
 			next(err);
-			
+
 		}
 	};
 
@@ -26,7 +26,23 @@ class UserController {
 
 			const token = await UserService.signIn(email, password);
 
-			res.status(200).json({ message: 'Autenticado com sucesso', token});
+			res.status(200).json({ message: 'Autenticado com sucesso', token });
+
+		} catch (err) {
+
+			next(err);
+
+		}
+	}
+
+	userUpdateInfo = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+		try {
+
+			const { name, email, password } = req.body;
+
+			const token = await UserService.userUpdate(email, password);
+
+			res.status(200).json({ message: 'Autenticado com sucesso', token });
 
 		} catch (err) {
 

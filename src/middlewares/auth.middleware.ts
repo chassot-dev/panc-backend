@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import { JwtPayload } from '../interfaces/jwt.interface'
 import { NotAllowedError } from '../utils/errors';
 import { ENV } from '../config/env';
 
@@ -16,6 +17,8 @@ export function authenticateToken(req: Request, res: Response, next: NextFunctio
 		if (err) {
 			return next(new NotAllowedError('Token inválido'));
 		}
+
+		req.user = user as JwtPayload;
 
 		next();
 
