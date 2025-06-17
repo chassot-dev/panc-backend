@@ -2,7 +2,7 @@ import User from '../models/user.model';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { ENV } from '../config/env';
-import { BadRequestError, DuplicatedError, NotFoundError } from '../utils/errors';
+import { BadRequestError, DuplicatedError, ForbiddenError, NotFoundError } from '../utils/errors';
 
 class UserService {
 
@@ -40,7 +40,7 @@ class UserService {
 			throw new NotFoundError('Login incorreto!');
 		}
 
-		const isValid = await bcrypt.compare(password, user.senha);
+		const isValid = await bcrypt.compare(password, user.password);
 		if (!isValid) {
 			throw new NotFoundError('Login incorreto');
 		}
@@ -55,29 +55,43 @@ class UserService {
 
 	}
 
-	async userUpdate(id: number, name: string, email: string, password: string): Promise<string> {
+	async update(userId: number, id: number, name?: string, email?: string, password?: string): Promise<string> {
+
+		if (!id) {
+			throw new BadRequestError('ID é obrigatório!');
+		}
+
+		if(userId != id){
+			throw new ForbiddenError('Você não tem permissao para atualizar!')
+		}
+
+		if (!name && !email && !password) {
+			throw new BadRequestError('Informe pelo menos um campo para atualizar!');
+		}
 
 		// Cria a instância de usuário
 		const user = await User.createFromId(id);
 
 		// Verifica se achou o usuário
 		if (user === null) {
-			throw new NotFoundError('Login incorreto!');
+			throw new NotFoundError('Usuário não encontrado!');
 		}
 
 		// Atualiza os campos se forem fornecidos
-		if (name){
+		if (name) {
 			user.name = name;
 		}
-		if (email){
+		if (email) {
 			user.email = email;
 		}
-		if (password){
+		if (password) {
 			await user.setPassword(password);
 		}
 
+		// Atira tudo no banco
 		await user.saveOnDB();
 
+		// Recria o token //
 		const token = jwt.sign(
 			{ id: user.id, email: user.email },
 			ENV.SECRET,
@@ -88,7 +102,7 @@ class UserService {
 
 	}
 
-	async userFindById(id: number): Promise<string> {
+	async findById(id: number): Promise<string> {
 
 		if (!id) {
 			throw new BadRequestError('Informe o id');

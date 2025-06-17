@@ -48,22 +48,29 @@ class User {
 	}
 
 	async saveOnDB() {
-		let res: ResultSetHeader;
-
 		if (!this._id) {
-			[res] = await db.query<ResultSetHeader>(
-				'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
-				[this._name, this._email, this._password]
-			);
-			this._id = res.insertId;
+			return this.createOnDB();
 		} else {
-			[res] = await db.query<ResultSetHeader>(
-				'UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?',
-				[this._name, this._email, this._password, this._id]
-			);
+			return this.updateOnDB();
 		}
+	}
 
+	async createOnDB(): Promise<number> {
+		const [res] = await db.query<ResultSetHeader>(
+			'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
+			[this._name, this._email, this._password]
+		);
+		this._id = res.insertId;
 		return this._id;
+	}
+
+	async updateOnDB(): Promise<number> {
+		if (!this._id) throw new Error('ID não definido para update');
+		const [res] = await db.query<ResultSetHeader>(
+			'UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?',
+			[this._name, this._email, this._password, this._id]
+		);
+		return res.affectedRows;
 	}
 
 	static async searchForEmail(email: string): Promise<User | null> {

@@ -38,11 +38,13 @@ class UserController {
 	userUpdateInfo = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
 
-			const { name, email, password } = req.body;
+			const id = Number(req.params.id);
+			const userId = req.user!.id;
+    		const { name, email, password } = req.body;
 
-			const token = await UserService.userUpdate(email, password);
+			const token = await UserService.update(userId, id, name, email, password);
 
-			res.status(200).json({ message: 'Autenticado com sucesso', token });
+			res.status(200).json({ message: 'Dados atualizados com sucesso!', token });
 
 		} catch (err) {
 
@@ -57,7 +59,7 @@ class UserController {
 
 			const id = req.params.id as string;
 
-			const name = await UserService.userFindById(Number(id));
+			const name = await UserService.findById(Number(id));
 
 			res.status(200).json({ message: 'Usuário Encontrado', name });
 
