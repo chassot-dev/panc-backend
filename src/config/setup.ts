@@ -2,8 +2,9 @@ import db from './database';
 
 export async function patchTables(): Promise<void> {
   try {
+
     await db.query(`
-      CREATE TABLE IF NOT EXISTS usuarios (
+      CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(250),
         email VARCHAR(250) UNIQUE,
@@ -11,7 +12,8 @@ export async function patchTables(): Promise<void> {
       );
     `);
 
-    console.log('Tabela "usuarios" verificada/criada com sucesso!');
+    console.log('Tabela "users" verificada/criada com sucesso!');
+
   } catch (err) {
     console.error('Erro ao criar tabela:', err);
   }

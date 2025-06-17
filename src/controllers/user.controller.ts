@@ -46,7 +46,6 @@ class UserController {
 
 			res.status(200).json({message: 'Usuário Encontrado', name});
 
-
 		} catch (err){
 
 			next(err);
@@ -54,7 +53,6 @@ class UserController {
 		}
 
 	}
-
 
 }
 

@@ -3,6 +3,7 @@ import { ResultSetHeader, RowDataPacket } from 'mysql2';
 
 class User {
 
+	private id?: number | undefined;
 	private _name: string;
 	private _email: string;
 	private _password: string
@@ -15,7 +16,7 @@ class User {
 
 	async save() {
 		const [res] = await db.query<ResultSetHeader>(
-			'INSERT INTO usuarios (name, email, password) VALUES (?, ?, ?)',
+			'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
 			[this._name, this._email, this._password]
 		);
 
@@ -25,7 +26,7 @@ class User {
 	static async searchForEmail(email: string): Promise<string | null> {
 
 		const [rows] = await db.query<RowDataPacket[]>(
-			'SELECT name FROM usuarios WHERE email = ?',
+			'SELECT name FROM users WHERE email = ?',
 			[email]
 		);
 
@@ -40,7 +41,7 @@ class User {
 	static async searchForId(id: number): Promise<string | null> {
 
 		const [rows] = await db.query<RowDataPacket[]>(
-			'SELECT name FROM usuarios WHERE id = ?',
+			'SELECT name FROM users WHERE id = ?',
 			[id]
 		)
 
@@ -49,7 +50,7 @@ class User {
 		}
 
 		return rows[0].name;
-		
+
 	}
 
 	// Getter e Setter para name
