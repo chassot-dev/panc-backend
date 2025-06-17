@@ -1,5 +1,5 @@
 import { ErrorRequestHandler } from 'express';
-import { BadRequestError, DuplicatedError, NotFoundError } from '../utils/errors';
+import { BadRequestError, DuplicatedError, NotAllowedError, NotFoundError } from '../utils/errors';
 
 export const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 
@@ -17,6 +17,11 @@ export const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 
 	if (err instanceof NotFoundError) {
 		res.status(404).json({ erro: err.message });
+		return;
+	}
+
+	if(err instanceof NotAllowedError) {
+		res.status(401).json({ erro: err.message });
 		return;
 	}
 

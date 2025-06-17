@@ -1,20 +1,53 @@
 import db from '../config/database';
+import bcrypt from 'bcrypt';
 import { ResultSetHeader, RowDataPacket } from 'mysql2';
 
 class User {
 
-	private id?: number | undefined;
+	private _id?: number;
 	private _name: string;
 	private _email: string;
 	private _password: string
 
-	constructor(name: string, email: string, password: string) {
+	private constructor(name: string, email: string, password: string, id?: number) {
+
 		this._name = name;
 		this._email = email;
 		this._password = password;
+
+		if (id) {
+			this._id = id;
+		}
+
 	}
 
-	async save() {
+	static async create(name: string, email: string, plainPassword: string): Promise<number> {
+
+		const passwordHash = await bcrypt.hash(plainPassword, 10);
+		const user = new User(name, email, passwordHash);
+		const userId = await user.createOnDB();
+
+		user._id = userId;
+
+		return userId;
+
+	}
+
+	static async createFromId(id: number): Promise<User | null> {
+		const [rows] = await db.query<RowDataPacket[]>(
+			'SELECT name, email, password FROM users WHERE id = ?',
+			[id]
+		);
+
+		if (rows.length === 0) {
+			return null;
+		}
+
+		const { name, email, password } = rows[0];
+		return new User(name, email, password, id);
+	}
+
+	async createOnDB() {
 		const [res] = await db.query<ResultSetHeader>(
 			'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
 			[this._name, this._email, this._password]
@@ -23,10 +56,10 @@ class User {
 		return res.insertId;
 	}
 
-	static async searchForEmail(email: string): Promise<string | null> {
+	static async searchForEmail(email: string): Promise<User | null> {
 
 		const [rows] = await db.query<RowDataPacket[]>(
-			'SELECT name FROM users WHERE email = ?',
+			'SELECT id FROM users WHERE email = ?',
 			[email]
 		);
 
@@ -34,23 +67,15 @@ class User {
 			return null;
 		}
 
-		return rows[0].name;
+		const userId = rows[0].id
+
+		return this.createFromId(userId)
 
 	}
 
-	static async searchForId(id: number): Promise<string | null> {
-
-		const [rows] = await db.query<RowDataPacket[]>(
-			'SELECT name FROM users WHERE id = ?',
-			[id]
-		)
-
-		if(rows.length === null) {
-			return null;
-		}
-
-		return rows[0].name;
-
+	// Getter para id
+	get id(): number {
+		return this._id!;
 	}
 
 	// Getter e Setter para name
@@ -71,6 +96,10 @@ class User {
 		this._email = value;
 	}
 
+	// Getter para senha
+	get senha(): string {
+		return this._password;
+	}
 
 }
 

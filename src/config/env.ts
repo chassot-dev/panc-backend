@@ -11,4 +11,5 @@ export const ENV = {
   DB_PASSWORD: ensureEnv('DB_PASSWORD'),
   DB_NAME: ensureEnv('DB_NAME'),
   APP_PORT: Number(process.env.APP_PORT || 3000),
+  SECRET: ensureEnv('SECRET')
 };

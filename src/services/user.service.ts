@@ -1,10 +1,11 @@
-// user.service.ts
-
-import { error } from 'console';
 import User from '../models/user.model';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import { ENV } from '../config/env';
 import { BadRequestError, DuplicatedError, NotFoundError } from '../utils/errors';
 
 class UserService {
+
 	async signUp(name: string, email: string, password: string): Promise<number> {
 
 		if (!name || !email || !password) {
@@ -18,28 +19,40 @@ class UserService {
 		}
 
 		// Cria o usuário e salva no banco
-		const user = new User(name, email, password);
-		const res = await user.save();
+		const id = await User.create(name, email, password);
 
-		// Como seu método save retorna o resultado da query, 
-		// o id inserido normalmente está em res.insertId (depende do driver)
-		return res;
+		// retorna o id
+		return id;
 
 	}
 
-	async userFindByEmail(email: string): Promise<string> {
+	async signIn(email: string, password: string): Promise<string> {
 
-		if (!email) {
-			throw new BadRequestError('Informe o e-mail');
+		if (!email || !password) {
+			throw new BadRequestError('Email ou senha não informado!');
 		}
 
-		const name = await User.searchForEmail(email);
+		console.log('Temos email e senha');
 
-		if (name === null) {
-			throw new NotFoundError('Não encontramos este e-mail');
+		const user = await User.searchForEmail(email);
+
+		if(user === null){
+			throw new NotFoundError('Login incorreto!');
 		}
 
-		return name;
+		const isValid = await bcrypt.compare(password, user.senha);
+		if (!isValid) {
+			throw new NotFoundError('Login incorreto');
+		}
+
+		const token = jwt.sign(
+			{ id: user.id, email: user.email },
+			ENV.SECRET,
+			{ expiresIn: '1h' }
+		);
+
+		return token;
+
 	}
 
 	async userFindById(id: number): Promise<string> {
@@ -48,14 +61,16 @@ class UserService {
 			throw new BadRequestError('Informe o id');
 		}
 
-		const name = await User.searchForId(id);
+		const user = await User.createFromId(id);
 
-		if (name === null){
+		if (!user){
 			throw new NotFoundError('Não encontramos este usuário');
 		}
 
-		return name;
+		return user.name;
+
 	}
+
 }
 
 export default new UserService();

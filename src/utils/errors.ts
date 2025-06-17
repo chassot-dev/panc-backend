@@ -18,3 +18,11 @@ export class DuplicatedError extends Error {
 		this.name = 'DuplicatedError';
 	}
 }
+
+export class NotAllowedError extends Error {
+	constructor(message: string) {
+		super(message);
+		this.name = 'NotAllowedError';
+	}
+}
+
