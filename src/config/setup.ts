@@ -1,13 +1,13 @@
-const db = require('./database');
+import db from './database';
 
-async function criarTabelas() {
+export async function patchTables(): Promise<void> {
   try {
     await db.query(`
       CREATE TABLE IF NOT EXISTS usuarios (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        nome VARCHAR(250),
+        name VARCHAR(250),
         email VARCHAR(250) UNIQUE,
-        senha VARCHAR(300)
+        password VARCHAR(300)
       );
     `);
 
@@ -16,5 +16,3 @@ async function criarTabelas() {
     console.error('Erro ao criar tabela:', err);
   }
 }
-
-module.exports = criarTabelas;
