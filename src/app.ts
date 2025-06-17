@@ -26,8 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(apiKeyMiddleware);
 
 // Rotas
-app.use('/user', userRouter);
-app.use('/permission', permissionRouter);
+app.use('/users', userRouter);
+app.use('/permissions', permissionRouter);
 
 // Tratamento de erro 404
 app.use((req: Request, res: Response, next: NextFunction) => {

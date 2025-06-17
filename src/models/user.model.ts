@@ -90,6 +90,23 @@ class User {
 
 	}
 
+	static async findAll(): Promise<User[]> {
+		const [rows] = await db.query<RowDataPacket[]>(
+			'SELECT id, name, email, password FROM users'
+		);
+
+		return rows.map(row => new User(row.name, row.email, row.password, row.id));
+	}
+
+	// Retorna um objeto seguro a ser mandado para o front //
+	toSafeObject() {
+		return {
+			id: this.id,
+			name: this.name,
+			email: this.email
+		};
+	}
+
 	// Getter para id
 	get id(): number {
 		return this._id!;

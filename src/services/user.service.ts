@@ -2,7 +2,7 @@ import User from '../models/user.model';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { ENV } from '../config/env';
-import { BadRequestError, DuplicatedError, ForbiddenError, NotFoundError } from '../utils/errors';
+import { BadRequestError, DuplicatedError, ForbiddenError, NotAllowedError, NotFoundError } from '../utils/errors';
 
 class UserService {
 
@@ -61,7 +61,7 @@ class UserService {
 			throw new BadRequestError('ID é obrigatório!');
 		}
 
-		if(userId != id){
+		if (userId != id) {
 			throw new ForbiddenError('Você não tem permissao para atualizar!')
 		}
 
@@ -102,10 +102,14 @@ class UserService {
 
 	}
 
-	async findById(id: number): Promise<string> {
+	async findById(userId: number, id: number): Promise<string> {
 
 		if (!id) {
 			throw new BadRequestError('Informe o id');
+		}
+
+		if (userId != id) {
+			throw new ForbiddenError('Você não tem permissão!')
 		}
 
 		const user = await User.createFromId(id);
@@ -117,6 +121,22 @@ class UserService {
 		return user.name;
 
 	}
+
+	async getAll(userId: number): Promise<Partial<User>[]> {
+		if (!userId) {
+			throw new NotAllowedError('Você precisa autenticar primeiro!');
+		}
+
+		const users = await User.findAll();
+
+		if (!users.length) {
+			throw new NotFoundError('Nenhum usuário encontrado');
+		}
+
+		// Remove a senha de cada usuário antes de retornar
+		return users.map(user => user.toSafeObject());
+	}
+
 
 }
 
