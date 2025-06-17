@@ -8,6 +8,7 @@ import morgan from 'morgan';
 import { patchTables } from './config/setup';
 import userRouter from './routes/user.routes';
 import { errorHandler } from './middlewares/error.middleware';
+import { apiKeyMiddleware } from './middlewares/apiKey.middleware';
 
 
 const app: Application = express();
@@ -20,6 +21,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(apiKeyMiddleware);
 
 // Rotas
 app.use('/user', userRouter);
