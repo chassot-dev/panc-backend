@@ -127,14 +127,14 @@ class UserService {
 			throw new NotAllowedError('Você precisa autenticar primeiro!');
 		}
 
-		const users = await User.findAll();
+		const users = await User.getAll();
 
 		if (!users.length) {
 			throw new NotFoundError('Nenhum usuário encontrado');
 		}
 
 		// Remove a senha de cada usuário antes de retornar
-		return users.map(user => user.toSafeObject());
+		return users;
 	}
 
 

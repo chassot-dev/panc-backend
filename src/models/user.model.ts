@@ -1,6 +1,7 @@
 import db from '../config/database';
 import bcrypt from 'bcrypt';
 import { ResultSetHeader, RowDataPacket } from 'mysql2';
+import Permission from './permission.model';
 
 class User {
 
@@ -61,6 +62,7 @@ class User {
 			[this._name, this._email, this._password]
 		);
 		this._id = res.insertId;
+		this.grantDefaultPermissions();
 		return this._id;
 	}
 
@@ -71,6 +73,16 @@ class User {
 			[this._name, this._email, this._password, this._id]
 		);
 		return res.affectedRows;
+	}
+
+	async grantDefaultPermissions(): Promise<void> {
+
+		if (!this._id) {
+			throw new Error('Usuário ainda não foi criado no banco.');
+		}
+
+		Permission.grantPermissionToUser(this.id, 2);
+
 	}
 
 	static async searchForEmail(email: string): Promise<User | null> {
@@ -90,13 +102,15 @@ class User {
 
 	}
 
-	static async findAll(): Promise<User[]> {
+	static async getAll(): Promise<{ id: number; name: string; email: string }[]> {
 		const [rows] = await db.query<RowDataPacket[]>(
-			'SELECT id, name, email, password FROM users'
+			'SELECT id, name, email FROM users'
 		);
 
-		return rows.map(row => new User(row.name, row.email, row.password, row.id));
+		// Fazemos um cast para dizer que rows é do tipo esperado
+		return rows as { id: number; name: string; email: string }[];
 	}
+
 
 	// Retorna um objeto seguro a ser mandado para o front //
 	toSafeObject() {

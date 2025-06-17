@@ -21,6 +21,24 @@ class PermissionController {
 
 	}
 
+	getAll = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+
+		try {
+
+			const id = Number(req.user?.id);
+
+			const permissions = await permissionService.getAll(id);
+
+			res.status(200).json({ message: 'Permissões encontradas', permissions });
+
+		} catch (err) {
+
+			next(err);
+
+		}
+
+	}
+
 }
 
 
