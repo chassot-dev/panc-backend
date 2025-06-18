@@ -9,10 +9,6 @@ class UserService {
 
 	async signUp(name: string, email: string, password: string): Promise<User> {
 
-		if (!name || !email || !password) {
-			throw new BadRequestError('Informe todos os dados!');
-		}
-
 		// Verifica se email já existe
 		const existingUser = await User.searchForEmail(email);
 		if (existingUser) {
@@ -28,12 +24,6 @@ class UserService {
 	}
 
 	async signIn(email: string, password: string): Promise<string> {
-
-		if (!email || !password) {
-			throw new BadRequestError('Email ou senha não informado!');
-		}
-
-		console.log('Temos email e senha');
 
 		const user = await User.searchForEmail(email);
 
@@ -57,14 +47,6 @@ class UserService {
 	}
 
 	async update(userId: number, id: number, name?: string, email?: string, password?: string): Promise<string> {
-
-		if (!id) {
-			throw new BadRequestError('ID é obrigatório!');
-		}
-
-		if (!name && !email && !password) {
-			throw new BadRequestError('Informe pelo menos um campo para atualizar!');
-		}
 
 		const hasAdminPermission = await Permission.userHasPermission(userId, 'admin');
 
@@ -127,7 +109,7 @@ class UserService {
 
 	}
 
-	async getAll(userId: number): Promise<Partial<User>[]> {
+	async getAll(userId: number): Promise<{ id: number; name: string; email: string }[]> {
 
 		const users = await User.getAll();
 
@@ -135,7 +117,6 @@ class UserService {
 			throw new NotFoundError('Nenhum usuário encontrado');
 		}
 
-		// Remove a senha de cada usuário antes de retornar
 		return users;
 
 	}

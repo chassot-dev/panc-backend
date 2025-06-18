@@ -109,6 +109,34 @@ class Transaction {
 
 	}
 
+	static async getAll(): Promise<{ id: number, userId: number, amount: number, type: {id: number, name: String, is_expense: number}, transactionDate: String | null, createdAt: String | null }[]> {
+
+		const [rows] = await db.query<RowDataPacket[]>(`
+			SELECT 
+				t.id, t.user_id, t.amount, t.transaction_date, t.created_at, tp.id as type_id, tp.name as type_name, tp.is_expense
+			FROM 
+				transactions t
+			INNER JOIN transaction_types tp
+				ON tp.id = t.type_id
+		`);
+
+		return rows.map(row => ({
+			id: row.id,
+			userId: row.user_id,
+			amount: Number(row.amount),
+			type: {
+				id: row.type_id,
+				name: row.type_name,
+				is_expense: row.is_expense
+			},
+			transactionDate: row.transaction_date ? row.transaction_date.toISOString() : null,
+			createdAt: row.created_at ? row.created_at.toISOString() : null,
+		}));
+
+	}
+
+
+
 	/*static async getAll(): Promise<{ id: number; name: string, isExpense: boolean }[]> {
 
 		const [rows] = await db.query<RowDataPacket[]>(

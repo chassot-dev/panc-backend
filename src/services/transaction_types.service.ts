@@ -1,13 +1,9 @@
 import TransactionType from '../models/transactionTypes.model';
-import { BadRequestError, NotAllowedError, NotFoundError } from '../utils/errors';
+import { NotFoundError } from '../utils/errors';
 
 class TransactionTypeService {
 
 	async findById(id: number): Promise<TransactionType> {
-
-		if (!id) {
-			throw new BadRequestError('Informe o id');
-		}
 
 		const transactionType = await TransactionType.createFromId(id);
 
@@ -20,10 +16,6 @@ class TransactionTypeService {
 	}
 
 	async getAll(userId: number): Promise<Partial<TransactionType>[]> {
-
-		if (!userId) {
-			throw new NotAllowedError('Você precisa autenticar primeiro!');
-		}
 
 		const permissions = await TransactionType.getAll();
 

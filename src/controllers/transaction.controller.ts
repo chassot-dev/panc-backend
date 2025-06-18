@@ -3,13 +3,13 @@ import { NextFunction, Request, Response } from 'express';
 
 class TransactionController {
 
-	findById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+	getById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
 		try {
 
 			const id = Number(req.params.id);
 
-			const transaction = await TransactionService.findById(id);
+			const transaction = await TransactionService.getById(id);
 
 			res.status(200).json({
 				message: 'Transação Encontrada',
@@ -46,15 +46,15 @@ class TransactionController {
 
 	};
 
-	/*getAll = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+	getAll = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
 		try {
 
 			const id = Number(req.user?.id);
 
-			const transactionTypes = await TransactionService.getAll(id);
+			const transactions = await TransactionService.getAll(id);
 
-			res.status(200).json({ message: 'Tipos encontrados encontrados', transactionTypes });
+			res.status(200).json({ message: 'Tipos encontrados encontrados', transactions });
 
 		} catch (err) {
 
@@ -62,7 +62,7 @@ class TransactionController {
 
 		}
 
-	}*/
+	}
 
 }
 

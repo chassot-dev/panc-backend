@@ -8,7 +8,8 @@ import { idParamSchema } from '../schemas/basic.schemas';
 const router = express.Router();
 const transaction = new TransactionController();
 
-router.get('/:id', authenticateToken, validateParams(idParamSchema), (req, res, next) => transaction.findById(req, res, next));
+router.get('/:id', authenticateToken, validateParams(idParamSchema), (req, res, next) => transaction.getById(req, res, next));
+router.get('/', authenticateToken, (req, res, next) => transaction.getAll(req, res, next));
 router.post('/', authenticateToken, validateBody(createTransactionSchema), (req, res, next) => transaction.create(req, res, next));
 
 export default router;

@@ -4,11 +4,7 @@ import { BadRequestError, NotFoundError } from '../utils/errors';
 
 class TransactionService {
 
-	async findById(id: number): Promise<Transaction> {
-
-		if (!id) {
-			throw new BadRequestError('Informe o id');
-		}
+	async getById(id: number): Promise<Transaction> {
 
 		const transaction = await Transaction.createFromId(id);
 
@@ -20,35 +16,23 @@ class TransactionService {
 
 	}
 
-	/*async getAll(userId: number): Promise<Partial<Transaction>[]> {
-
-		if (!userId) {
-			throw new NotAllowedError('Você precisa autenticar primeiro!');
-		}
+	async getAll(userId: number): Promise<{ id: number, userId: number, amount: number, typeId: number, transactionDate: string | null, createdAt: string | null }[]> {
 
 		const permissions = await Transaction.getAll();
 
 		if (!permissions.length) {
-			throw new NotFoundError('Nenhum tipo encontrado');
+			throw new NotFoundError('Nenhuma transação encontrada');
 		}
 
 		return permissions;
 
-	}*/
+	}
 
 	async create(userId: number, amount: number, typeId: number): Promise<Transaction> {
 
-		if (!userId || !amount || !typeId) {
-			throw new BadRequestError('Informe todos os dados!');
-		}
-
-		// Cria o objeto Decimal
 		const amountDecimal = new Decimal(amount);
-
-		// Cria a transação e salva no banco
 		const transaction = await Transaction.create(userId, amountDecimal, typeId);
 
-		// Retorna o ID da transação
 		return transaction;
 
 	}

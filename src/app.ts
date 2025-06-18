@@ -31,7 +31,7 @@ app.use(apiKeyMiddleware);
 app.use('/users', userRouter);
 app.use('/permissions', permissionRouter);
 app.use('/transactionTypes', transactionTypeRouter);
-app.use('/transaction', transactionRouter);
+app.use('/transactions', transactionRouter);
 
 // Tratamento de erro 404
 app.use((req: Request, res: Response, next: NextFunction) => {
