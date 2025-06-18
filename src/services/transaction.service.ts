@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import Transaction from '../models/transaction.model';
 import { BadRequestError, NotFoundError } from '../utils/errors';
 
@@ -34,6 +35,24 @@ class TransactionService {
 		return permissions;
 
 	}*/
+
+	async create(userId: number, amount: number, typeId: number): Promise<Transaction> {
+
+		if (!userId || !amount || !typeId) {
+			throw new BadRequestError('Informe todos os dados!');
+		}
+
+		// Cria o objeto Decimal
+		const amountDecimal = new Decimal(amount);
+
+		// Cria a transação e salva no banco
+		const transaction = await Transaction.create(userId, amountDecimal, typeId);
+
+		// Retorna o ID da transação
+		return transaction;
+
+	}
+
 
 }
 

@@ -7,9 +7,9 @@ class TransactionController {
 
 		try {
 
-			const id = req.params.id as string;
+			const id = Number(req.params.id);
 
-			const transaction = await TransactionService.findById(Number(id));
+			const transaction = await TransactionService.findById(id);
 
 			res.status(200).json({
 				message: 'Transação Encontrada',
@@ -23,6 +23,28 @@ class TransactionController {
 		}
 
 	}
+
+	create = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+
+		try {
+
+			const { userId, amount, typeId } = req.body;
+
+			await TransactionService.create(
+				Number(userId),
+				Number(amount),
+				Number(typeId)
+			);
+
+			res.status(201).json({ message: 'Criado com sucesso'});
+
+		} catch (err) {
+
+			next(err);
+
+		}
+
+	};
 
 	/*getAll = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
