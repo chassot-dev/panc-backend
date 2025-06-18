@@ -22,7 +22,7 @@ class User {
 
 	}
 
-	static async create(name: string, email: string, plainPassword: string): Promise<number> {
+	static async create(name: string, email: string, plainPassword: string): Promise<User> {
 
 		const passwordHash = await bcrypt.hash(plainPassword, 10);
 		const user = new User(name, email, passwordHash);
@@ -30,7 +30,7 @@ class User {
 
 		user._id = userId;
 
-		return userId;
+		return user;
 
 	}
 

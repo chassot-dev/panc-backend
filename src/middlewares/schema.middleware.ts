@@ -1,7 +1,7 @@
 import { AnyZodObject } from 'zod';
 import { Request, Response, NextFunction } from 'express';
 
-export const validate = (schema: AnyZodObject) =>
+export const validateBody = (schema: AnyZodObject) =>
 	(req: Request, res: Response, next: NextFunction) => {
 		try {
 			req.body = schema.parse(req.body);
@@ -10,3 +10,15 @@ export const validate = (schema: AnyZodObject) =>
 			next(err);
 		}
 	};
+
+
+export const validateParams = (schema: AnyZodObject) =>
+  (req: Request, res: Response, next: NextFunction) => {
+    try {
+      // parseia e substitui req.params
+      req.params = schema.parse(req.params);
+      next();
+    } catch (err) {
+      next(err);
+    }
+  };
