@@ -7,7 +7,7 @@ import Permission from '../models/permission.model';
 
 class UserService {
 
-	async signUp(name: string, email: string, password: string): Promise<number> {
+	async signUp(name: string, email: string, password: string): Promise<User> {
 
 		if (!name || !email || !password) {
 			throw new BadRequestError('Informe todos os dados!');
@@ -20,10 +20,10 @@ class UserService {
 		}
 
 		// Cria o usuário e salva no banco
-		const id = await User.create(name, email, password);
+		const user = await User.create(name, email, password);
 
 		// retorna o id
-		return id;
+		return user;
 
 	}
 

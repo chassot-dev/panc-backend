@@ -8,9 +8,9 @@ class UserController {
 
 			const { name, email, password } = req.body;
 
-			const id = await UserService.signUp(name, email, password);
+			UserService.signUp(name, email, password);
 
-			res.status(201).json({ message: 'Usuário criado', id });
+			res.status(201).json({ message: 'Cadastrado com sucesso!'});
 
 		} catch (err: any) {
 
@@ -26,7 +26,7 @@ class UserController {
 
 			const token = await UserService.signIn(email, password);
 
-			res.status(200).json({ message: 'Autenticado com sucesso', token });
+			res.status(200).json({ message: 'Autenticado com sucesso!', token });
 
 		} catch (err) {
 
