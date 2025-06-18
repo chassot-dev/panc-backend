@@ -8,6 +8,7 @@ import morgan from 'morgan';
 import { patchTables } from './config/setup';
 import userRouter from './routes/user.routes';
 import permissionRouter from './routes/permission.routes';
+import transactionTypeRouter from './routes/transactionTypes.routes'
 import { errorHandler } from './middlewares/error.middleware';
 import { apiKeyMiddleware } from './middlewares/apiKey.middleware';
 
@@ -28,6 +29,7 @@ app.use(apiKeyMiddleware);
 // Rotas
 app.use('/users', userRouter);
 app.use('/permissions', permissionRouter);
+app.use('/transactionTypes', transactionTypeRouter);
 
 // Tratamento de erro 404
 app.use((req: Request, res: Response, next: NextFunction) => {

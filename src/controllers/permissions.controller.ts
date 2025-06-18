@@ -9,9 +9,12 @@ class PermissionController {
 
 			const id = req.params.id as string;
 
-			const name = await permissionService.findById(Number(id));
+			const permission = await permissionService.findById(Number(id));
 
-			res.status(200).json({ message: 'Permissão Encontrada', name });
+			res.status(200).json({
+				message: 'Permissão Encontrada',
+				permission: permission.toSafeObject()
+			});
 
 		} catch (err) {
 

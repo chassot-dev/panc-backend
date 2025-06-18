@@ -3,19 +3,19 @@ import { BadRequestError, NotAllowedError, NotFoundError } from '../utils/errors
 
 class PermissionService {
 
-	async findById(id: number): Promise<string> {
+	async findById(id: number): Promise<Permission> {
 
 		if (!id) {
 			throw new BadRequestError('Informe o id');
 		}
 
-		const permission = await Permission.createFromId(id);
+		const permission = await Permission.createFromId(Number(id));
 
 		if (!permission) {
 			throw new NotFoundError('Não encontramos esta permissão');
 		}
 
-		return permission.name;
+		return permission;
 
 	}
 

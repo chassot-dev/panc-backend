@@ -60,9 +60,12 @@ class UserController {
 			const id = Number(req.params.id as string);
 			const userId = Number(req.user?.id!)
 
-			const name = await UserService.findById(userId, id);
+			const user = await UserService.findById(userId, id);
 
-			res.status(200).json({ message: 'Usuário Encontrado', name });
+			res.status(200).json({
+				message: 'Usuário Encontrado',
+				user: user.toSafeObject()
+			});
 
 		} catch (err) {
 

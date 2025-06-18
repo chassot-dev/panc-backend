@@ -79,6 +79,19 @@ class Permission {
 		return rows.length > 0;
 	}
 
+	// Retorna um objeto seguro a ser mandado para o front //
+	toSafeObject() {
+		return {
+			id: this.id,
+			name: this.name,
+		};
+	}
+
+	// Getter para id
+	get id(): number {
+		return this._id!;
+	}
+
 	// Getter e Setter para name
 	get name(): string {
 		return this._name;
@@ -87,6 +100,7 @@ class Permission {
 	set name(value: string) {
 		this._name = value;
 	}
+	
 }
 
 export default Permission;

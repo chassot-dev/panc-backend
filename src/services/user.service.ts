@@ -105,14 +105,16 @@ class UserService {
 
 	}
 
-	async findById(userId: number, id: number): Promise<string> {
+	async findById(userId: number, id: number): Promise<User> {
 
 		if (!id) {
 			throw new BadRequestError('Informe o id');
 		}
 
-		if (userId != id) {
-			throw new ForbiddenError('Você não tem permissão!')
+		const hasAdminPermission = await Permission.userHasPermission(userId, 'admin');
+
+		if (userId !== id && !hasAdminPermission) {
+			throw new ForbiddenError('Você não tem permissão para isso!');
 		}
 
 		const user = await User.createFromId(id);
@@ -121,14 +123,11 @@ class UserService {
 			throw new NotFoundError('Não encontramos este usuário');
 		}
 
-		return user.name;
+		return user;
 
 	}
 
 	async getAll(userId: number): Promise<Partial<User>[]> {
-		if (!userId) {
-			throw new NotAllowedError('Você precisa autenticar primeiro!');
-		}
 
 		const users = await User.getAll();
 
@@ -138,8 +137,8 @@ class UserService {
 
 		// Remove a senha de cada usuário antes de retornar
 		return users;
-	}
 
+	}
 
 }
 
