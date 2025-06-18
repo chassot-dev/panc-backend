@@ -34,7 +34,6 @@ class PermissionService {
 		// Remove a senha de cada usuário antes de retornar
 		return permissions;
 
-
 	}
 
 }
