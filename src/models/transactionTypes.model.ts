@@ -15,7 +15,7 @@ class TransactionType {
 
 	}
 
-	static async createFromId(id: number): Promise<{ id: number; name: string; isExpense: boolean } | null> {
+	static async createFromId(id: number): Promise<TransactionType | null> {
 
 		const [rows] = await db.query<RowDataPacket[]>(
 			'SELECT name, is_expense FROM transaction_types WHERE id = ?',
@@ -27,12 +27,8 @@ class TransactionType {
 		}
 
 		const row = rows[0];
-		return {
-			id,
-			name: row.name,
-			isExpense: row.is_expense,
-		};
-		
+		return new TransactionType(id, row.name, row.is_expense)
+
 	}
 
 	static async getAll(): Promise<{ id: number; name: string, isExpense: boolean }[]> {
@@ -44,6 +40,15 @@ class TransactionType {
 		return rows as { id: number; name: string, isExpense: boolean }[];
 
 	}
+
+	toSafeObject() {
+		return {
+			id: this._id,
+			name: this._name,
+			isExpense: this._isExpense,
+		};
+	}
+
 
 	// Getter e Setter para name
 	get name(): string {

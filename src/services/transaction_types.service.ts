@@ -3,7 +3,7 @@ import { BadRequestError, NotAllowedError, NotFoundError } from '../utils/errors
 
 class TransactionTypeService {
 
-	async findById(id: number): Promise<Partial<TransactionType>> {
+	async findById(id: number): Promise<TransactionType> {
 
 		if (!id) {
 			throw new BadRequestError('Informe o id');

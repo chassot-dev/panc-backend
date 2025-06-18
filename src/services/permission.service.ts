@@ -31,7 +31,6 @@ class PermissionService {
 			throw new NotFoundError('Nenhuma permissão encontrada');
 		}
 
-		// Remove a senha de cada usuário antes de retornar
 		return permissions;
 
 	}

@@ -1,4 +1,4 @@
-import transaction_typesService from '../services/transaction_types.service';
+import TransactionTypeService from '../services/transaction_types.service';
 import { NextFunction, Request, Response } from 'express';
 
 class TransactionTypeController {
@@ -9,9 +9,12 @@ class TransactionTypeController {
 
 			const id = req.params.id as string;
 
-			const transactionType = await transaction_typesService.findById(Number(id));
+			const transactionType = await TransactionTypeService.findById(Number(id));
 
-			res.status(200).json({ message: 'Tipo encontrado', transactionType });
+			res.status(200).json({
+				message: 'Tipo Encontrado',
+				permission: transactionType.toSafeObject()
+			});
 
 		} catch (err) {
 
@@ -27,7 +30,7 @@ class TransactionTypeController {
 
 			const id = Number(req.user?.id);
 
-			const transactionTypes = await transaction_typesService.getAll(id);
+			const transactionTypes = await TransactionTypeService.getAll(id);
 
 			res.status(200).json({ message: 'Tipos encontrados encontrados', transactionTypes });
 

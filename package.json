@@ -11,6 +11,7 @@
 		"bcrypt": "^6.0.0",
 		"cookie-parser": "~1.4.4",
 		"debug": "~2.6.9",
+		"decimal.js": "^10.5.0",
 		"dotenv": "^16.5.0",
 		"express": "~4.16.1",
 		"http-errors": "~1.6.3",
@@ -21,6 +22,7 @@
 	},
 	"devDependencies": {
 		"@types/bcrypt": "^5.0.2",
+		"@types/dinero.js": "^1.9.4",
 		"@types/express": "^5.0.3",
 		"@types/jsonwebtoken": "^9.0.10",
 		"@types/morgan": "^1.9.10",
