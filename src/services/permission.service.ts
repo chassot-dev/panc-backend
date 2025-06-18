@@ -28,7 +28,7 @@ class PermissionService {
 		const permissions = await Permission.getAll();
 
 		if (!permissions.length) {
-			throw new NotFoundError('Nenhum usuário encontrado');
+			throw new NotFoundError('Nenhuma permissão encontrada');
 		}
 
 		// Remove a senha de cada usuário antes de retornar
