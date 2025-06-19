@@ -28,7 +28,8 @@ class TransactionController {
 
 		try {
 
-			const { userId, amount, typeId } = req.body;
+			const { amount, typeId } = req.body;
+			const userId = req.user?.id;
 
 			await TransactionService.create(
 				Number(userId),
@@ -52,7 +53,7 @@ class TransactionController {
 
 			const id = Number(req.user?.id);
 
-			const transactions = await TransactionService.getAll(id);
+			const transactions = await TransactionService.getAll();
 
 			res.status(200).json({ message: 'Tipos encontrados encontrados', transactions });
 

@@ -4,6 +4,7 @@ import path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 import express, { Application, Request, Response, NextFunction } from 'express';
+import cors from "cors";
 import morgan from 'morgan';
 import { patchTables } from './config/setup';
 import userRouter from './routes/user.routes';
@@ -16,6 +17,7 @@ import { apiKeyMiddleware } from './middlewares/apiKey.middleware';
 
 const app: Application = express();
 
+
 // Verifica que está tudo certo com o banco
 patchTables();
 
@@ -24,6 +26,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use(apiKeyMiddleware);
 

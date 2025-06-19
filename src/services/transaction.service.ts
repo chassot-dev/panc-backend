@@ -16,7 +16,7 @@ class TransactionService {
 
 	}
 
-	async getAll(userId: number): Promise<{ id: number, userId: number, amount: number, type: {id: number, name: String, is_expense: number}, transactionDate: String | null, createdAt: String | null }[]> {
+	async getAll(): Promise<{ id: number, user: {id: number, name: string}, amount: number, type: {id: number, name: String, is_expense: number}, transactionDate: String | null, createdAt: String | null }[]> {
 
 		const permissions = await Transaction.getAll();
 
