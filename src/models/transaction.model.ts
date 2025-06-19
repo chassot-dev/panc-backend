@@ -134,19 +134,7 @@ class Transaction {
 		}));
 
 	}
-
-
-
-	/*static async getAll(): Promise<{ id: number; name: string, isExpense: boolean }[]> {
-
-		const [rows] = await db.query<RowDataPacket[]>(
-			'SELECT id, name, is_expense FROM transaction_types'
-		);
-
-		return rows as { id: number; name: string, isExpense: boolean }[];
-
-	}*/
-
+	
 	toSafeObject() {
 		return {
 			id: this._id,
