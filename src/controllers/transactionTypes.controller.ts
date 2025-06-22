@@ -42,6 +42,27 @@ class TransactionTypeController {
 
 	}
 
+	create = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+
+		try {
+
+			const { name, isExpense } = req.body;
+
+			await TransactionTypeService.create(
+				name,
+				isExpense
+			);
+
+			res.status(201).json({ message: 'Criado com sucesso' });
+
+		} catch (err) {
+
+			next(err);
+
+		}
+
+	};
+
 }
 
 

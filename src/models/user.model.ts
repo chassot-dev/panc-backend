@@ -34,7 +34,7 @@ class User {
 
 	}
 
-	static async createFromId(id: number): Promise<User | null> {
+	static async getById(id: number): Promise<User | null> {
 		const [rows] = await db.query<RowDataPacket[]>(
 			'SELECT name, email, password FROM users WHERE id = ?',
 			[id]
@@ -98,7 +98,7 @@ class User {
 
 		const userId = rows[0].id
 
-		return this.createFromId(userId)
+		return this.getById(userId)
 
 	}
 

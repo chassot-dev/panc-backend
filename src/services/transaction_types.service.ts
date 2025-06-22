@@ -27,6 +27,14 @@ class TransactionTypeService {
 
 	}
 
+	async create(name: string, is_expense: boolean): Promise<TransactionType> {
+
+		const transaction = await TransactionType.create(name, is_expense);
+
+		return transaction;
+
+	}
+
 }
 
 export default new TransactionTypeService();

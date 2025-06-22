@@ -55,7 +55,7 @@ class UserService {
 		}
 
 		// Cria a instância de usuário
-		const user = await User.createFromId(id);
+		const user = await User.getById(id);
 
 		// Verifica se achou o usuário
 		if (user === null) {
@@ -99,7 +99,7 @@ class UserService {
 			throw new ForbiddenError('Você não tem permissão para isso!');
 		}
 
-		const user = await User.createFromId(id);
+		const user = await User.getById(id);
 
 		if (!user) {
 			throw new NotFoundError('Não encontramos este usuário');

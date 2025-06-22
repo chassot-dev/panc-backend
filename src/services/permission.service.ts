@@ -5,7 +5,7 @@ class PermissionService {
 
 	async findById(id: number): Promise<Permission> {
 
-		const permission = await Permission.createFromId(Number(id));
+		const permission = await Permission.getById(Number(id));
 
 		if (!permission) {
 			throw new NotFoundError('Não encontramos esta permissão');

@@ -56,7 +56,7 @@ class Transaction {
 		 VALUES (?, ?, ?, ?)`,
 			[
 				this._userId,
-				this._amount.toNumber(), // assume que o banco espera decimal(10,2)
+				this._amount.toNumber(),
 				this._typeId,
 				this._transactionDate ?? new Date()
 			]
@@ -83,7 +83,7 @@ class Transaction {
 		return res.affectedRows;
 	}
 
-	static async createFromId(id: number): Promise<Transaction | null> {
+	static async getById(id: number): Promise<Transaction | null> {
 
 		const [rows] = await db.query<RowDataPacket[]>(
 			'SELECT * FROM transactions WHERE id = ?',
@@ -120,6 +120,7 @@ class Transaction {
 				ON tp.id = t.type_id
 			INNER JOIN users u
 				ON u.id = t.user_id
+			ORDER BY t.transaction_date DESC, t.created_at DESC
 		`);
 
 		return rows.map(row => ({

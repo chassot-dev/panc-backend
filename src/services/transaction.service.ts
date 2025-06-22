@@ -6,7 +6,7 @@ class TransactionService {
 
 	async getById(id: number): Promise<Transaction> {
 
-		const transaction = await Transaction.createFromId(id);
+		const transaction = await Transaction.getById(id);
 
 		if (!transaction) {
 			throw new NotFoundError('Não encontramos este tipo');

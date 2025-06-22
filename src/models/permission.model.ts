@@ -13,7 +13,7 @@ class Permission {
 
 	}
 
-	static async createFromId(id: number): Promise<Permission | null> {
+	static async getById(id: number): Promise<Permission | null> {
 
 		const [rows] = await db.query<RowDataPacket[]>(
 			'SELECT name FROM permissions WHERE id = ?',
