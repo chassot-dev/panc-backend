@@ -3,6 +3,7 @@ import PancService from '../../services/panc.service';
 import { NextFunction, Request, Response } from 'express';
 import roboflowService from '../../integration/roboflow/roboflow.service';
 import pancService from '../../services/panc.service';
+import { NotFoundError } from '../../exceptions/errors';
 
 class PancController {
 	updateInfo = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -108,9 +109,8 @@ class PancController {
 			next(err);
 		}
 	}
-	async detect(req: Request, res: Response) {
+	async detect(req: Request, res: Response, next: NextFunction) {
 		try {
-
 			const imageBase64 = req.file?.buffer.toString('base64');
 
 			if (!imageBase64) {
@@ -118,17 +118,20 @@ class PancController {
 			}
 
 			const nome_cientifico = await roboflowService.detect(imageBase64);
-			let panc = pancService.findByName(nome_cientifico)
+
+			let panc = await pancService.findByName(nome_cientifico)
 
 			res.status(200).json(
 				panc 
 			);
 		} catch (err: any) {
+		
 			if (err.message.includes("Not Found")) {
 				res.status(404).json({ error: err.message });
 			} else {
-				throw err;
+				throw err.message;
 			}
+			
 		}
 	}
 }
