@@ -40,6 +40,8 @@ class PancService {
   async update(
     id: number,
     data: Partial<{
+      nome: string,
+      img: string,
       nome_cientifico: string;
       familia_botanica: string;
       origem: string;

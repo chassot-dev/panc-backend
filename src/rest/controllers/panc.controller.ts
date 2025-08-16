@@ -13,6 +13,8 @@ class PancController {
 			const id = Number(req.params.id);
 
 			const {
+				nome,
+				img,
 				nome_cientifico,
 				familia_botanica,
 				origem,
@@ -23,6 +25,8 @@ class PancController {
 			} = req.body;
 
 			const updatedPanc = await PancService.update(id, {
+				nome,
+				img,
 				nome_cientifico,
 				familia_botanica,
 				origem,
