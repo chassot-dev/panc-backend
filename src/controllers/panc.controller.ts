@@ -9,59 +9,65 @@ class PancController {
 
 	updateInfo = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
-
 			const id = Number(req.params.id);
-	
-    		const { name, email, password } = req.body;
 
-			const token = await PancService.update(id, name, email, password);
+			const {
+				nome_cientifico,
+				familia_botanica,
+				origem,
+				habito_crescimento,
+				identificacao_botanica
+			} = req.body;
 
-			res.status(200).json({ message: 'Dados atualizados com sucesso!', token });
+			const updatedPanc = await PancService.update(id, {
+				nome_cientifico,
+				familia_botanica,
+				origem,
+				habito_crescimento,
+				identificacao_botanica
+			});
+
+			res.status(200).json({
+				message: 'Panc atualizada com sucesso!',
+				panc: updatedPanc
+			});
 
 		} catch (err) {
-
 			next(err);
-
 		}
 	}
 
+
 	findById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-
 		try {
-
-			const pancId = Number(req.params?.id!)
+			const pancId = Number(req.params.id);
 
 			const panc = await PancService.findById(pancId);
 
 			res.status(200).json({
-				message: 'Usuário Encontrado',
-				panc: panc.toSafeObject()
+				message: 'Panc encontrada',
+				panc
 			});
 
 		} catch (err) {
-
 			next(err);
-
 		}
-
 	}
 
+
 	getAll = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-
 		try {
+	
+			const pancs = await PancService.getAll();
 
-			const pancId = Number(req.params!.id)
-
-			const pancs = await PancService.getAll(pancId);
-
-			res.status(200).json(pancs);
+			res.status(200).json({
+				message: 'Lista de Pancs',
+				pancs
+			});
 
 		} catch (err) {
-
 			next(err);
-
 		}
-
 	}
 
 	detect = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -72,15 +78,15 @@ class PancController {
 			});
 
 			const response = await axios({
-			method: "POST",
-			url: "https://serverless.roboflow.com/panc-dataset-cskb6/3",
-			params: {
-				api_key: "LBnhR3wOmNY9eK8BuwF3",
-			},
-			data: image,
-			headers: {
-				"Content-Type": "application/x-www-form-urlencoded",
-			},
+				method: "POST",
+				url: "https://serverless.roboflow.com/panc-dataset-cskb6/3",
+				params: {
+					api_key: "LBnhR3wOmNY9eK8BuwF3",
+				},
+				data: image,
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded",
+				},
 			});
 
 			console.log(response.data);
