@@ -5,9 +5,6 @@ import roboflowService from '../../integration/roboflow/roboflow.service';
 import pancService from '../../services/panc.service';
 
 class PancController {
-
-
-
 	updateInfo = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
 			const id = Number(req.params.id);
@@ -32,10 +29,9 @@ class PancController {
 				partes_comestiveis
 			});
 
-			res.status(200).json({
-				message: 'Panc atualizada com sucesso!',
-				panc: updatedPanc
-			});
+			res.status(200).json(
+				updatedPanc
+			);
 
 		} catch (err) {
 			next(err);
@@ -69,10 +65,9 @@ class PancController {
 				partes_comestiveis
 			});
 
-			res.status(200).json({
-				message: 'Panc atualizada com sucesso!',
-				panc: panc
-			});
+			res.status(200).json(
+				panc
+			);
 
 		} catch (err) {
 			next(err);
@@ -86,10 +81,9 @@ class PancController {
 
 			const panc = await PancService.findById(pancId);
 
-			res.status(200).json({
-				message: 'Panc encontrada',
+			res.status(200).json(
 				panc
-			});
+			);
 
 		} catch (err) {
 			next(err);
@@ -102,10 +96,9 @@ class PancController {
 
 			const pancs = await PancService.getAll();
 
-			res.status(200).json({
-				message: 'Lista de Pancs',
+			res.status(200).json(
 				pancs
-			});
+			);
 
 		} catch (err) {
 			next(err);
@@ -124,8 +117,7 @@ class PancController {
 			let panc = pancService.findByName(nome_cientifico)
 
 			res.status(200).json(
-				// TODO panc
-				nome_cientifico 
+				panc 
 			);
 		} catch (err: any) {
 			if (err.message.includes("Not Found")) {
