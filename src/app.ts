@@ -9,6 +9,7 @@ import cors from "cors";
 import { runMigrations } from '../src/resources/db/migrate';
 import morgan from 'morgan';
 import pancRouter from './rest/routes/panc.routes';
+import geminiRouter from './rest/routes/gemini.routes';
 import { errorHandler } from './rest/middlewares/error.middleware';
 import { apiKeyMiddleware } from './rest/middlewares/apiKey.middleware';
 import { runSeeders } from './resources/db/seed';
@@ -24,6 +25,7 @@ app.use(cors());
 app.use(apiKeyMiddleware);
 
 app.use('/pancs', pancRouter);
+app.use('/gemini', geminiRouter);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.status(404).json({ erro: 'Rota não encontrada' });
