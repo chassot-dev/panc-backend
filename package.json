@@ -1,5 +1,5 @@
 {
-	"name": "financecontrol-backend",
+	"name": "panc-backend",
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
@@ -41,7 +41,7 @@
 		"ts-node-dev": "^2.0.0",
 		"typescript": "^5.9.2"
 	},
-	"description": "Backend for a little project of mine.",
+	"description": "API rest para gestão de Plantas Alimentícias Não Convencionais.",
 	"main": "index.js",
 	"repository": {
 		"type": "git",
