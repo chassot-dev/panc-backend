@@ -11,13 +11,10 @@ import pancRouter from './rest/routes/panc.routes';
 import { errorHandler } from './rest/middlewares/error.middleware';
 import { apiKeyMiddleware } from './rest/middlewares/apiKey.middleware';
 
-
 const app: Application = express();
 
-runMigrations();
+// runMigrations();
 
-
-// Configurações do Express
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -26,18 +23,14 @@ app.use(cors());
 
 app.use(apiKeyMiddleware);
 
-// Rotas
 app.use('/pancs', pancRouter);
 
-// Tratamento de erro 404
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.status(404).json({ erro: 'Rota não encontrada' });
 });
 
 app.use(errorHandler);
 
-
-// KEEP LISTENING //
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);

@@ -70,6 +70,21 @@ class PancService {
     return panc;
   }
 
+  async findByName(name: string): Promise<Panc> {
+    if (!name) throw new BadRequestError('Informe o nome');
+
+    const panc = await Panc.findOne({
+		where: {
+			nome_cientifico: name
+		},  
+		include: ['nome_popular', 'partes_comestiveis'] 
+	});
+
+    if (!panc) throw new NotFoundError('Panc não encontrada.');
+
+    return panc;
+  }
+
   async findById(id: number): Promise<Panc> {
     if (!id) throw new BadRequestError('Informe o id');
 
