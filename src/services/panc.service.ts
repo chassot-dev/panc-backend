@@ -1,92 +1,35 @@
-import Panc from '../domain/models/panc.model';
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
-import { ENV } from '../resources/database/config/env';
+import Panc from '../domain/panc/panc.model';
 import { BadRequestError, DuplicatedError, ForbiddenError, NotAllowedError, NotFoundError } from '../exceptions/errors';
 
 class PancService {
 
-	async signUp(name: string, email: string, password: string): Promise<Panc> {
+	async create(panc: Panc): Promise<Panc> {
 
-		// Verifica se email já existe
-		const existingPanc = await Panc.searchForEmail(email);
-		if (existingPanc) {
-			throw new DuplicatedError('Email já cadastrado.');
-		}
+		// TODO criacao
 
-		// Cria o usuário e salva no banco
-		const panc = await Panc.create(name, email, password);
-
-		// retorna o id
 		return panc;
 
 	}
 
-	async signIn(email: string, password: string): Promise<string> {
-
-		const panc = await Panc.searchForEmail(email);
+	async update(id: number, name?: string, email?: string, password?: string): Promise<void> {
+		const panc = await Panc.findByPk(id);
 
 		if (panc === null) {
-			throw new NotFoundError('Login incorreto!');
+			throw new NotFoundError('Panc não encontrada!');
 		}
 
-		const isValid = await bcrypt.compare(password, panc.password);
-		if (!isValid) {
-			throw new NotFoundError('Login incorreto');
-		}
+		// TODO atualizar
+		// await Panc.();
 
-		const token = jwt.sign(
-			{ id: panc.id, email: panc.email },
-			ENV.SECRET,
-			{ expiresIn: '1h' }
-		);
-
-		return token;
-
-	}
-
-	async update(id: number, name?: string, email?: string, password?: string): Promise<string> {
-
-		// Cria a instância de usuário
-		const panc = await Panc.getById(id);
-
-		// Verifica se achou o usuário
-		if (panc === null) {
-			throw new NotFoundError('Usuário não encontrado!');
-		}
-
-		// Atualiza os campos se forem fornecidos
-		if (name) {
-			panc.name = name;
-		}
-		if (email) {
-			panc.email = email;
-		}
-		if (password) {
-			await panc.setPassword(password);
-		}
-
-		// Atira tudo no banco
-		await panc.saveOnDB();
-
-		// Recria o token //
-		const token = jwt.sign(
-			{ id: panc.id, email: panc.email },
-			ENV.SECRET,
-			{ expiresIn: '1h' }
-		);
-
-		return token;
-
+		return;
 	}
 
 	async findById(id: number): Promise<Panc> {
-
 		if (!id) {
 			throw new BadRequestError('Informe o id');
 		}
 
-		const panc = await Panc.getById(id);
+		const panc = await Panc.findByPk(id);
 
 		if (!panc) {
 			throw new NotFoundError('Não encontramos este usuário');
@@ -96,9 +39,9 @@ class PancService {
 
 	}
 
-	async getAll(pancId: number): Promise<{ id: number; name: string; email: string }[]> {
+	async getAll(pancId: number): Promise<Panc[]> {
 
-		const pancs = await Panc.getAll();
+		const pancs = await Panc.findAll();
 
 		if (!pancs.length) {
 			throw new NotFoundError('Nenhum usuário encontrado');

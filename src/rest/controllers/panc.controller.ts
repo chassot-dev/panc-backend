@@ -1,9 +1,11 @@
 import PancService from '../../services/panc.service';
+
 import { NextFunction, Request, Response } from 'express';
 import fs from "fs";
 import axios from "axios";
-import Panc from '../../domain/models/panc.model';
+import Panc from '../../domain/panc/panc.model';
 import { NotFoundError } from '../../exceptions/errors';
+import RoboflowService from '../../integration/roboflow/roboflow.service';
 
 class PancController {
 
@@ -35,7 +37,7 @@ class PancController {
 
 			res.status(200).json({
 				message: 'Usuário Encontrado',
-				panc: panc.toSafeObject()
+				panc: panc.toJSON()
 			});
 
 		} catch (err) {
@@ -64,32 +66,25 @@ class PancController {
 
 	}
 
-	detect = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-
+	async detect(req: Request, res: Response, next: NextFunction) {
 		try {
-			const image = fs.readFileSync("picao-preto.jpg", {
-				encoding: "base64",
-			});
+		const imageBuffer = fs.readFileSync(req.file!.path);
+		const imageBase64 = imageBuffer.toString("base64");
 
-			const response = await axios({
-			method: "POST",
-			url: "https://serverless.roboflow.com/panc-dataset-cskb6/3",
-			params: {
-				api_key: "LBnhR3wOmNY9eK8BuwF3",
-			},
-			data: image,
-			headers: {
-				"Content-Type": "application/x-www-form-urlencoded",
-			},
-			});
+		const result = await RoboflowService.detect(imageBase64);
 
-			console.log(response.data);
-		} catch (error: any) {
-			console.error("Erro ao detectar PANC:", error.message);
+		res.status(200).json({
+			message: "Detecção realizada com sucesso!",
+			result,
+		});
+		} catch (err: any) {
+		if (err.message.includes("Not Found")) {
+			res.status(404).json({ error: err.message });
+		} else {
+			next(err);
 		}
-
-
-	}
+    }
+}
 
 }
 
