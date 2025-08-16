@@ -1,12 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
-<<<<<<< HEAD:src/models/panc.model.ts
-import { sequelize } from '../db/connection';
-import { PancAttributes, PancCreationAttributes } from '../interfaces/panc.interface';
-=======
+import NomePopular from './nomePopular.model';
 import { PancAttributes, PancCreationAttributes } from './panc.interface';
 import { sequelize } from '../../resources/db/connection';
->>>>>>> 5822c31c8f9046dfe2945c958ffa9e3ef1fb30ee:src/domain/panc/panc.model.ts
-import NomePopular from './nomePopular.model';
 
 class Panc extends Model<PancAttributes, PancCreationAttributes>
   implements PancAttributes {
