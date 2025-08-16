@@ -14,7 +14,6 @@ export const validateBody = (schema: ZodTypeAny) => (req: Request, res: Response
 export const validateParams = (schema: AnyZodObject) =>
 	(req: Request, res: Response, next: NextFunction) => {
 		try {
-			// parseia e substitui req.params
 			req.params = schema.parse(req.params);
 			next();
 		} catch (err) {

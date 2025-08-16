@@ -11,7 +11,6 @@ class PartesComestiveis extends Model<PartesComestiveisAttributes, PartesComesti
   public id_panc!: number;
 }
 
-// Inicialização do model
 PartesComestiveis.init(
   {
     id: {

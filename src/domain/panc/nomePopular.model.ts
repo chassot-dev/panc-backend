@@ -8,13 +8,8 @@ class NomePopular extends Model<NomePopularAttributes, NomePopularCreationAttrib
   public id!: number;
   public nome!: string;
   public id_panc!: number;
-
-  // timestamps
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
 }
 
-// Inicializa o model
 NomePopular.init(
   {
     id: {

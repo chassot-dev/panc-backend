@@ -7,7 +7,7 @@ export const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 	console.error('Erro capturado no middleware:', err);
 
 	if (err instanceof ZodError) {
-		const firstError = err.errors[0]; // Pega só o primeiro erro
+		const firstError = err.errors[0];
 		res.status(400).json({
 			message: `${firstError.message}`,
 		});

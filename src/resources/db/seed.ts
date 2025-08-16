@@ -22,7 +22,6 @@ export const runSeeders = async () => {
   await seeder.up();
 };
 
-// rodar diretamente
 if (require.main === module) {
   (async () => {
     try {

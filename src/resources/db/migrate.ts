@@ -18,8 +18,6 @@ export const migrator = new Umzug({
   logger: console,
 });
 
-
-// Rodar migrations se chamar direto
 if (require.main === module) {
   (async () => {
     try {
