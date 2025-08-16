@@ -13,7 +13,7 @@ import { apiKeyMiddleware } from './rest/middlewares/apiKey.middleware';
 
 const app: Application = express();
 
-// runMigrations();
+runMigrations();
 
 app.use(morgan('dev'));
 app.use(express.json());
