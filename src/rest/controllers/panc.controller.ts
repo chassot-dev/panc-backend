@@ -123,10 +123,10 @@ class PancController {
 			const nome_cientifico = await roboflowService.detect(imageBase64);
 			let panc = pancService.findByName(nome_cientifico)
 
-			res.status(200).json({
-				message: "Detecção realizada com sucesso!",
-				panc,
-			});
+			res.status(200).json(
+				// TODO panc
+				nome_cientifico 
+			);
 		} catch (err: any) {
 			if (err.message.includes("Not Found")) {
 				res.status(404).json({ error: err.message });

@@ -7,7 +7,7 @@ export class RoboflowService {
     this.roboflow = new RoboflowClient();
   }
 
-  public async detect(imageBase64: string): Promise<any> {
+  public async detect(imageBase64: string): Promise<string> {
     const result = await this.roboflow.predict(imageBase64);
 
     
@@ -15,7 +15,7 @@ export class RoboflowService {
       throw new Error("Nenhum objeto identificado na imagem (Not Found)");
     }
 
-    return { nome_cientifico: result.predictions[0].class };
+    return result.predictions[0].class;
   }
 }
 
