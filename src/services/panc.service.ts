@@ -53,7 +53,7 @@ class PancService {
 			throw new BadRequestError('Informe o id');
 		}
 
-		const panc = await Panc.getById(id);
+		const panc = await Panc.findByPk(id);
 
 		if (!panc) {
 			throw new NotFoundError('Não encontramos este usuário');

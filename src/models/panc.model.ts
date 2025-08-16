@@ -1,6 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
-import sequelize from '../config/database';
+import { sequelize } from '../db/connection';
 import { PancAttributes, PancCreationAttributes } from '../interfaces/panc.interface';
+import NomePopular from './nomePopular.model';
 
 class Panc extends Model<PancAttributes, PancCreationAttributes>
   implements PancAttributes {
@@ -46,10 +47,5 @@ Panc.init(
     timestamps: false,
   }
 );
-
-Panc.hasMany(NomePopular, {
-  foreignKey: 'id_panc',
-  as: 'nomes_populares',
-});
 
 export default Panc;

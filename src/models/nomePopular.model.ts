@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../db/connection';
 import Panc from './panc.model';
-import { NomePopularAttributes, NomePopularCreationAttributes } from '../interfaces/INomePopular';
+import { NomePopularAttributes, NomePopularCreationAttributes } from '../interfaces/nomePopular.interface';
 
 class NomePopular extends Model<NomePopularAttributes, NomePopularCreationAttributes>
   implements NomePopularAttributes {
