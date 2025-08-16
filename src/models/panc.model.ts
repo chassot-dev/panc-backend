@@ -1,9 +1,8 @@
 import db from '../config/database';
 import bcrypt from 'bcrypt';
 import { ResultSetHeader, RowDataPacket } from 'mysql2';
-import Permission from './permission.model';
 
-class User {
+class Panc {
 
 	private _id?: number;
 	private _name: string;
@@ -22,21 +21,21 @@ class User {
 
 	}
 
-	static async create(name: string, email: string, plainPassword: string): Promise<User> {
+	static async create(name: string, email: string, plainPassword: string): Promise<Panc> {
 
 		const passwordHash = await bcrypt.hash(plainPassword, 10);
-		const user = new User(name, email, passwordHash);
-		const userId = await user.saveOnDB();
+		const panc = new Panc(name, email, passwordHash);
+		const pancId = await panc.saveOnDB();
 
-		user._id = userId;
+		panc._id = pancId;
 
-		return user;
+		return panc;
 
 	}
 
-	static async getById(id: number): Promise<User | null> {
+	static async getById(id: number): Promise<Panc | null> {
 		const [rows] = await db.query<RowDataPacket[]>(
-			'SELECT name, email, password FROM users WHERE id = ?',
+			'SELECT name, email, password FROM pancs WHERE id = ?',
 			[id]
 		);
 
@@ -45,7 +44,7 @@ class User {
 		}
 
 		const { name, email, password } = rows[0];
-		return new User(name, email, password, id);
+		return new Panc(name, email, password, id);
 	}
 
 	async saveOnDB() {
@@ -58,37 +57,26 @@ class User {
 
 	async createOnDB(): Promise<number> {
 		const [res] = await db.query<ResultSetHeader>(
-			'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
+			'INSERT INTO pancs (name, email, password) VALUES (?, ?, ?)',
 			[this._name, this._email, this._password]
 		);
 		this._id = res.insertId;
-		this.grantDefaultPermissions();
 		return this._id;
 	}
 
 	async updateOnDB(): Promise<number> {
 		if (!this._id) throw new Error('ID não definido para update');
 		const [res] = await db.query<ResultSetHeader>(
-			'UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?',
+			'UPDATE pancs SET name = ?, email = ?, password = ? WHERE id = ?',
 			[this._name, this._email, this._password, this._id]
 		);
 		return res.affectedRows;
 	}
 
-	async grantDefaultPermissions(): Promise<void> {
-
-		if (!this._id) {
-			throw new Error('Usuário ainda não foi criado no banco.');
-		}
-
-		await Permission.grantPermissionToUser(this.id, 'USER');
-
-	}
-
-	static async searchForEmail(email: string): Promise<User | null> {
+	static async searchForEmail(email: string): Promise<Panc | null> {
 
 		const [rows] = await db.query<RowDataPacket[]>(
-			'SELECT id FROM users WHERE email = ?',
+			'SELECT id FROM pancs WHERE email = ?',
 			[email]
 		);
 
@@ -96,15 +84,15 @@ class User {
 			return null;
 		}
 
-		const userId = rows[0].id
+		const pancId = rows[0].id
 
-		return this.getById(userId)
+		return this.getById(pancId)
 
 	}
 
 	static async getAll(): Promise<{ id: number; name: string; email: string }[]> {
 		const [rows] = await db.query<RowDataPacket[]>(
-			'SELECT id, name, email FROM users'
+			'SELECT id, name, email FROM pancs'
 		);
 
 		// Fazemos um cast para dizer que rows é do tipo esperado
@@ -154,4 +142,4 @@ class User {
 	}
 }
 
-export default User;
+export default Panc;

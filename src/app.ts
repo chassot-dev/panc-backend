@@ -7,10 +7,7 @@ import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from "cors";
 import morgan from 'morgan';
 import { patchTables } from './config/setup';
-import userRouter from './routes/user.routes';
-import permissionRouter from './routes/permission.routes';
-import transactionTypeRouter from './routes/transactionTypes.routes'
-import transactionRouter from './routes/transaction.routes'
+import pancRouter from './routes/panc.routes';
 import { errorHandler } from './middlewares/error.middleware';
 import { apiKeyMiddleware } from './middlewares/apiKey.middleware';
 
@@ -31,10 +28,7 @@ app.use(cors());
 app.use(apiKeyMiddleware);
 
 // Rotas
-app.use('/users', userRouter);
-app.use('/permissions', permissionRouter);
-app.use('/transactionTypes', transactionTypeRouter);
-app.use('/transactions', transactionRouter);
+app.use('/pancs', pancRouter);
 
 // Tratamento de erro 404
 app.use((req: Request, res: Response, next: NextFunction) => {
