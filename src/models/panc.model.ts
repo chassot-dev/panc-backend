@@ -47,4 +47,9 @@ Panc.init(
   }
 );
 
+Panc.hasMany(NomePopular, {
+  foreignKey: 'id_panc',
+  as: 'nomes_populares',
+});
+
 export default Panc;
