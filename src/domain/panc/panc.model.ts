@@ -1,6 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import { PancAttributes, PancCreationAttributes } from './panc.interface';
 import { sequelize } from '../../resources/db/connection';
+import NomePopular from './nomePopular.model';
 
 class Panc extends Model<PancAttributes, PancCreationAttributes>
   implements PancAttributes {
@@ -10,6 +11,10 @@ class Panc extends Model<PancAttributes, PancCreationAttributes>
   public origem!: string;
   public habito_crescimento!: string;
   public identificacao_botanica!: string;
+
+  // timestamps
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
 }
 
 Panc.init(
@@ -46,5 +51,10 @@ Panc.init(
     timestamps: false,
   }
 );
+
+Panc.hasMany(NomePopular, {
+  foreignKey: 'id_panc',
+  as: 'nomes_populares',
+});
 
 export default Panc;

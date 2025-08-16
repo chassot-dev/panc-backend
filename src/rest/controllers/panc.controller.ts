@@ -11,79 +11,85 @@ class PancController {
 
 	updateInfo = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
-
 			const id = Number(req.params.id);
-	
-    		const { name, email, password } = req.body;
 
-			const token = await PancService.update(id, name, email, password);
+			const {
+				nome_cientifico,
+				familia_botanica,
+				origem,
+				habito_crescimento,
+				identificacao_botanica
+			} = req.body;
 
-			res.status(200).json({ message: 'Dados atualizados com sucesso!', token });
+			const updatedPanc = await PancService.update(id, {
+				nome_cientifico,
+				familia_botanica,
+				origem,
+				habito_crescimento,
+				identificacao_botanica
+			});
+
+			res.status(200).json({
+				message: 'Panc atualizada com sucesso!',
+				panc: updatedPanc
+			});
 
 		} catch (err) {
-
 			next(err);
-
 		}
 	}
 
+
 	findById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-
 		try {
-
-			const pancId = Number(req.params?.id!)
+			const pancId = Number(req.params.id);
 
 			const panc = await PancService.findById(pancId);
 
 			res.status(200).json({
-				message: 'Usuário Encontrado',
-				panc: panc.toJSON()
+				message: 'Panc encontrada',
+				panc
 			});
 
 		} catch (err) {
-
 			next(err);
-
 		}
-
 	}
 
+
 	getAll = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-
 		try {
+	
+			const pancs = await PancService.getAll();
 
-			const pancId = Number(req.params!.id)
-
-			const pancs = await PancService.getAll(pancId);
-
-			res.status(200).json(pancs);
+			res.status(200).json({
+				message: 'Lista de Pancs',
+				pancs
+			});
 
 		} catch (err) {
-
 			next(err);
-
 		}
-
 	}
 
 	async detect(req: Request, res: Response, next: NextFunction) {
 		try {
-		const imageBuffer = fs.readFileSync(req.file!.path);
-		const imageBase64 = imageBuffer.toString("base64");
+			const imageBuffer = fs.readFileSync(req.file!.path);
+			const imageBase64 = imageBuffer.toString("base64");
 
-		const result = await RoboflowService.detect(imageBase64);
+			const result = await RoboflowService.detect(imageBase64);
 
-		res.status(200).json({
-			message: "Detecção realizada com sucesso!",
-			result,
-		});
+			res.status(200).json({
+				message: "Detecção realizada com sucesso!",
+				result,
+			});
 		} catch (err: any) {
-		if (err.message.includes("Not Found")) {
-			res.status(404).json({ error: err.message });
-		} else {
-			next(err);
-		}
-    }
+			if (err.message.includes("Not Found")) {
+				res.status(404).json({ error: err.message });
+			} else {
+				next(err);
+			}
+    	}
 }
 
 }
