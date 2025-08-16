@@ -6,6 +6,7 @@ import axios from "axios";
 import Panc from '../../domain/panc/panc.model';
 import { NotFoundError } from '../../exceptions/errors';
 import RoboflowService from '../../integration/roboflow/roboflow.service';
+import roboflowService from '../../integration/roboflow/roboflow.service';
 
 class PancController {
 
@@ -71,13 +72,17 @@ class PancController {
 			next(err);
 		}
 	}
-
-	async detect(req: Request, res: Response, next: NextFunction) {
+	async detect(req: Request, res: Response) {
 		try {
-			const imageBuffer = fs.readFileSync(req.file!.path);
-			const imageBase64 = imageBuffer.toString("base64");
+			console.log(req.body)
+			 const imageBase64 = req.file?.buffer.toString('base64');
+			console.log(imageBase64)
 
-			const result = await RoboflowService.detect(imageBase64);
+			if (!imageBase64) {
+				return res.status(400).json({ error: "Nenhuma imagem enviada" });
+			}
+
+			const result = await roboflowService.detect(imageBase64);
 
 			res.status(200).json({
 				message: "Detecção realizada com sucesso!",
@@ -87,11 +92,10 @@ class PancController {
 			if (err.message.includes("Not Found")) {
 				res.status(404).json({ error: err.message });
 			} else {
-				next(err);
+				throw err;
 			}
-    	}
-}
-
+		}
+	}
 }
 
 
