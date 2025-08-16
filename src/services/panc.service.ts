@@ -1,9 +1,5 @@
-import Panc from '../models/panc.model';
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
-import { ENV } from '../config/env';
-import { BadRequestError, DuplicatedError, ForbiddenError, NotAllowedError, NotFoundError } from '../utils/errors';
-import { PancCreationAttributes } from '../interfaces/panc.interface';
+import Panc from '../domain/panc/panc.model';
+import { BadRequestError, DuplicatedError, NotFoundError } from '../exceptions/errors';
 
 class PancService {
 
@@ -48,7 +44,6 @@ class PancService {
 	}
 
 	async findById(id: number): Promise<Panc> {
-
 		if (!id) {
 			throw new BadRequestError('Informe o id');
 		}
@@ -64,6 +59,7 @@ class PancService {
 	}
 
 	async getAll(): Promise<Panc[]> {
+
 		const pancs = await Panc.findAll();
 
 		if (!pancs.length) {

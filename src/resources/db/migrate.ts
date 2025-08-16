@@ -3,7 +3,7 @@ import { sequelize } from './connection';
 
 const migrator = new Umzug({
   migrations: {
-    glob: 'src/migrations/*.ts',
+    glob: 'src/resources/db/migrations/*.ts',
     resolve: ({ name, path, context }) => {
       const migration = require(path!);
       return {

@@ -1,6 +1,11 @@
 import { Model, DataTypes } from 'sequelize';
+<<<<<<< HEAD:src/models/panc.model.ts
 import { sequelize } from '../db/connection';
 import { PancAttributes, PancCreationAttributes } from '../interfaces/panc.interface';
+=======
+import { PancAttributes, PancCreationAttributes } from './panc.interface';
+import { sequelize } from '../../resources/db/connection';
+>>>>>>> 5822c31c8f9046dfe2945c958ffa9e3ef1fb30ee:src/domain/panc/panc.model.ts
 import NomePopular from './nomePopular.model';
 
 class Panc extends Model<PancAttributes, PancCreationAttributes>
@@ -11,6 +16,10 @@ class Panc extends Model<PancAttributes, PancCreationAttributes>
   public origem!: string;
   public habito_crescimento!: string;
   public identificacao_botanica!: string;
+
+  // timestamps
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
 }
 
 Panc.init(
