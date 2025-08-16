@@ -24,11 +24,11 @@ export const up = async (queryInterface: QueryInterface) => {
       allowNull: false,
     },
     habito_crescimento: {
-      type: DataTypes.STRING(250),
+      type: DataTypes.STRING(1000),
       allowNull: false,
     },
     identificacao_botanica: {
-      type: DataTypes.STRING(250),
+      type: DataTypes.TEXT(),
       allowNull: false,
     },
     img: {

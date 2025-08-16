@@ -15,9 +15,6 @@ import { runSeeders } from './resources/db/seed';
 
 const app: Application = express();
 
-runMigrations();
-runSeeders();
-
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -1,100 +1,157 @@
-[{
-	"id": 1,
-	"nome" : "Tansagem",
-	"nome_cientifico": "Plantago major",
-	"familia_botanica": "Plantaginaceae",
-	"origem": "Exótica",
-	"habito_crescimento": "Herbácea",
-	"identificacao_botanica": "Raiz: raiz(es) axial(ais) presente(s) não engrossada(s). Caule: cáudice(s) inconspícuo(s); caule(s) aéreo ausente(s). Folha: ápice(s) da lâmina(s) agudo(s) a(s) obtuso(s); consistência membranácea(s) a(s) papirácea(s); lâmina(s) ovada(s). Inflorescência: forma do tricoma(s) do escapo em forma de fita; inflorescência(s) quando madura(s) ereta(s); orientação do tricoma(s) do escapo antrorso. Flor: ápice(s) da bráctea(s) obtuso(s) a(s) acuminado(s); corola actinomorfa(s); número de estame(s) 4; tubo da corola glabro(s). Fruto: número de semente(s) 6 a(s) 35. Semente: formato das semente(s) irregular(es); lado(s) ventral(ais) plano(s); superfície(s) rugosa(s).",
-	"img": "https://inaturalist-open-data.s3.amazonaws.com/photos/44243372/original.jpg"
-},
-{
-	"id": 2,
-	"nome" : "Serralha",
-	"nome_cientifico": "Sonchus oleraceus",
-	"familia_botanica": "Asteraceae",
-	"origem": "Nativa",
-	"habito_crescimento": "Herbácea",
-	"identificacao_botanica": "Caule: planta(s) de caule(s) herbáceo(s) glabro(s). Folha: folha(s) inferior(es) profundamente runcinada(s)/com lóbulo(s) dentado(s)/ápice(s) agudo(s) a(s) obtuso(s)/margem(ns) do limbo runcinada(s); folha(s) superior(es) com aurícula(s) aguda(s). Inflorescência: capítulo(s) em cima(s) corimbiforme(s) terminal(ais). Flor: flor(es) com lígula(s) amarela. Fruto: cipsela(s) transversalmente rugosa(s). ",
-	"img": "https://bs.plantnet.org/image/o/1db63c3b5e0d84f7738e4f15117ecc20858489e0"
-},
-{
-	"id": 3,
-	"nome" : "Picão-Preto",
-	"nome_cientifico": "Bidens pilosa",
-	"familia_botanica": "Asteraceae",
-	"origem": "Exótica ",
-	"habito_crescimento": "Herbácea",
-	"identificacao_botanica": "Raiz: xilopódio ausente(s). Caule: indumento setoso(s)/pubescente(s)/glabrescente(s). Folha: pecíolo(s) peciolada(s); lâmina(s) inteira oval(ais)/tripartida(s) segmento(s) oval-lanceolada(s)/pinatifida(s) segmento(s) oval-lanceolada(s); margem(ns) serrilhada(s); indumento pubescente(s) em amba(s) a(s) face(s)/estrigoso(s) em amba(s) a(s) face(s)/glabrescente(s); textura membranácea(s). Inflorescência: capitulescência(s) cimeira(s) de capítulo(s)/laxa(s); capítulo(s) discoide(s)/radiado(s); comprimento das bráctea(s) bráctea-involucral(ais) externa(s) e interna(s) com cerca do mesmo comprimento/bráctea-involucral(ais) externa(s) menor que a(s) interna(s); bráctea(s) involucral(ais) externa(s) espatulada(s)/oblanceolada(s)/pubescente(s); bráctea(s) involucral(ais) interna(s) lanceolada(s)/oblongo(s) lanceada(s)/glabra(s)/tomentosa(s) no ápice(s); pálea(s) linear(es) lanceolada(s)/lanceada(s). Flor: cor da flor(es) flor(es) do disco amarela e flor(es) do raio branca; flor(es) do raio inconspícua(s)/ausente(s); limbo da flor(es) do disco cilíndrico(s). Fruto: formato linear(es)/oblongo(s)/curvado(s); indumento glabro(s)/tuberculado(s) setoso(s); pápus 2 aristado(s)/3 aristado(s)/4 aristado(s)/5 aristado(s); arista(s) do pápus ereta(s)/inclinada(s).",
-	"img": "https://inaturalist-open-data.s3.amazonaws.com/photos/4081752/large.JPG"
-},
-{
-	"id": 4,
-	"nome" : "Ora-Pro-Nobis",
-	"nome_cientifico": "Pereskia aculeata",
-	"familia_botanica": "Cactaceae",
-	"origem": "Nativa",
-	"habito_crescimento": "Trepadeira",
-	"identificacao_botanica": " Caule: aréola(s) com espinho(s) pareado(s) curvo(s). Folha: ápice(s) agudo(s); formato elíptica(s)/oval(ais); nervura(s) lateral(ais) em ângulo de 40 a(s) 60 graus. Inflorescência: flor(es) cimeira(s) mais de 10. Flor: aréola(s) do receptáculo sem cerda(s); cerda(s) estaminoidal(ais) ausente(s); corola rotácea(s); perianto(s) creme. Fruto: forma globoso(s). Semente: número 1 a(s) 5",
-	"img": "https://www.unirio.br/ccbs/ibio/herbariohuni/imagens/copy_of_PereskiaaculeataAlexandreMachado.jpg"
-},
-{
-	"id": 5,
-	"nome" : "Beldroegão",
-	"nome_cientifico": "Talinum paniculatum",
-	"familia_botanica": "Talinaceae",
-	"origem": "Nativa",
-	"habito_crescimento": "Herbácea",
-	"identificacao_botanica": "Inflorescência: número de flor(es) mais de 50; pedúnculo(s) cilíndrico(s). Flor: estame(s) 10 a(s) 15. Fruto: sépala(s) caduca(s). Semente: semente(s) verrucosa(s). ",
-	"img": "https://galeria.ufsc.br/d/235947-1/Talinum+paniculatum+-+Foto_+Ana+Clara+Farias.jpg"
-},
-{
-	"id": 6,
-	"nome" : "Jambu",
-	"nome_cientifico": "Acmella oleracea",
-	"familia_botanica": "Asteraceae",
-	"origem": "Exótica",
-	"habito_crescimento": "Herbácea",
-	"identificacao_botanica": "Erva anual. Ramos decumbentes a eretos, glabros. Folhas pecioladas, estreito aladas, lâmina amplo ovada a deltada, ápice agudo a curto acuminado, margem dentada, base truncada a curto atenuada, ambas faces glabras a esparso pilosas. Capítulos discóides, pedunculados. Invólucro 3-seriado, receptáculo com ápice agudo, páleas com ápice agudo, brácteas involucrais 15-18, herbáceas, margem inteira a sinuada, esparso ciliadas, externas 5-6, estreito ovadas a lanceoladas, ápice agudo, internas lanceoladas, ápice agudo. Flores 400-600, corola amarela, 5-mera. Cipsela moderado a denso ciliada, margem sem espessamento. Pápus com 2 cerdas subiguais.",
-	"img": "https://bs.plantnet.org/image/o/d68b3237410debeaa954e63a712030268432513a"
-},
-{
-	"id": 7,
-	"nome" : "Dente-de-Leão",
-	"nome_cientifico": "Taraxacum officinale",
-	"familia_botanica": "Asteraceae",
-	"origem": "Exótica ",
-	"habito_crescimento": "Herbácea",
-	"identificacao_botanica": "Caule: caule(s) acaule. Folha: comprimento da lâmina(s) maior(es) que 20 cm; forma da lâmina(s) espatulada(s)/espatulada(s) runcinada(s); margem(ns) foliar(es) serreada(s)/duplamente serreada(s). Inflorescência: bráctea-involucral(ais) série externa(s) revoluta(s); tamanho do escapo maior(es) que 20 cm",
-	"img": "https://floradigital.ufsc.br/imagens/75891843934afe34f07dea15c1a64ca6765c.JPG"
-},
-{
-	"id": 8,
-	"nome" : "Crepe-do-Japão",
-	"nome_cientifico": "Youngia japonica",
-	"familia_botanica": "Asteraceae",
-	"origem": "Exótica",
-	"habito_crescimento": "Herbácea",
-	"identificacao_botanica": "Ervas anuais ou bianuais, eretas, 15,0–57,0 cm de altura. Caules eretos de 1–6 com até 60,0 cm alt., ramificados na parte superior, delgados ou robustos, fistulosos, pilosos ou glabros. Folhas basais rosuladas, de 3,0–18,0 x 2,0–7,0 cm, oblanceoladas, lirado–pinnatífidas ou runcinadas, obtusas ou agudas no ápice e atenuadas na base, denticuladas na margem, glabras na superfície superior e tomentosas na inferior, especialmente nas nervuras; lóbulos laterais em número variável, gradualmente reduzidos em direção à base, às vezes nulos; pecíolos de 1,5 – 7,0 cm de compr., glabros, pilosos ou densamente pilosos; folhas caulinares escassas, semelhante as basais, gradualmente menores, frequentemente reduzidas a brácteas. Capítulos discoides, numerosos, eretos, pedunculados, dispostos em cimas corimbiformes, de 6,0–7,0 mm de alt., pedúnculos de até 3,0 mm de compr., filiformes; Invólucro de 4,0–7,0 mm de compr., cilíndrico antes da antese e campanulado após, glabros; brácteas involucrais em duas series, as externas de 1,0–5,0 mm de compr., triangulares a obovadas, agudas, margem membranosa; as internas de 6,0 mm de compr., lanceoladas, agudas, margem membranosa, tricomas curtos na parte interna, adpressos. Flores 15–20,perfeitas, pentadentadas, amarelas, 5,0–7,0 mm de compr.; receptáculo plano. Cipselas castanhas, 2,0–2,5 mm de compr., pouco comprimidas, fusiformes, ligeiramente atenuadas em direção ao ápice, 11–13 costelas, 2 mais proeminentes. Pápus branco, de 2,5–3,0 mm de compr",
-	"img": "https://bs.plantnet.org/image/o/d434527e13998c9cfe259c2be24e36d04bceb71e"
-},
-{
-	"id": 9,
-	"nome" : "Capuchinha",
-	"nome_cientifico": "Tropaeolum majus",
-	"familia_botanica": "Tropaeolaceae",
-	"origem": "Exótica",
-	"habito_crescimento": "Herbácea",
-	"identificacao_botanica": "Caule glabro. Folha simples, lâmina inteira 1,8–9 x 2–11,5 cm, orbicular, face abaxial pubescente. Flor com cálcar reto ou levemente curvado, 1,8–2,5cm de comprimento; cálice amarelo, sépalas lanceoladas, sépalas superiores 1,0–1,6 x 0,4–0,8cm, sépalas inferiores 1–1,8 x 0,4–0,8cm; corola laranja, amarela ou vermelha em diversas tonalidades, pétalas obovais, ápice arredondado.",
-	"img": "https://www.gardenia.net/laravel-filemanager/photos/shares/1846174993_39d4d7dbdf_zOptimized.jpg"
-},
-{
-	"id": 10,
-	"nome" : "Hibisco",
-	"nome_cientifico": "Hibiscus rosa-sinensis",
-	"familia_botanica": "Malvaceae",
-	"origem": "Exótica",
-	"habito_crescimento": "Arbustiva",
-	"identificacao_botanica": "Arbustos de folha perene, de 1-3 m de altura. Ramos teretos, esparsamente estrelados e pilosos. Estípulas filiformes, 5-12 mm, pilosas; pecíolo 5-20 mm, viloso; lâmina foliar ampla ou estreitamente ovada, não lobada, 4-9 × 2-5 cm, papeada, pilosa nas nervuras apenas abaxialmente, base arredondada ou cuneiforme, margem dentada ou lobada, ápice acuminado. Flores solitárias, axilares nos ramos superiores, geralmente pendentes, simples ou duplas. Pedicelo 3-7 cm, esparsamente estrelado, piloso ou quase glabro, articulado perto do ápice. Lóbulos do epiciclo 6-7, filiformes, conados na base, 8-15 mm, esparsamente estrelados, de ápice obtuso ou agudo. Cálice campanulado, ca. 2 cm, estrelado puberulento, lóbulos 5, ovados a lanceolados. Corola vermelho-rosada, avermelhada ou amarelo-alaranjada, em forma de funil, 6-10 cm de diâmetro, frequentemente dupla; pétalas obovadas, pilosas abaxialmente, ápice arredondado. Coluna estaminal 4-8 cm, glabra. Ramos estilares 5. Cápsula ovoide, ca. 2,5 cm, glabra, ápice bicudo. Fl. durante todo o ano.",
-	"img": "https://www.picturethisai.com/wiki-image/1080/322524809552658432.jpeg"
-}]
+[
+  {
+    "id": 1,
+    "nome": "Tansagem",
+    "nome_popular": ["Tanchagem", "platagem"],
+    "nome_cientifico": "Plantago major",
+    "familia_botanica": "Plantaginaceae",
+    "origem": "Exótica",
+    "habito_crescimento": "Herbácea",
+    "identificacao_botanica": "Raiz: raiz(es) axial(ais) presente(s) não engrossada(s). Caule: cáudice(s) inconspícuo(s); caule(s) aéreo ausente(s). Folha: ápice(s) da lâmina(s) agudo(s) a(s) obtuso(s); consistência membranácea(s) a(s) papirácea(s); lâmina(s) ovada(s). Inflorescência: forma do tricoma(s) do escapo em forma de fita; inflorescência(s) quando madura(s) ereta(s); orientação do tricoma(s) do escapo antrorso. Flor: ápice(s) da bráctea(s) obtuso(s) a(s) acuminado(s); corola actinomorfa(s); número de estame(s) 4; tubo da corola glabro(s). Fruto: número de semente(s) 6 a(s) 35. Semente: formato das semente(s) irregular(es); lado(s) ventral(ais) plano(s); superfície(s) rugosa(s).",
+    "img": "https://inaturalist-open-data.s3.amazonaws.com/photos/44243372/original.jpg",
+    "partes_comestiveis": [
+      { "parte": "Folha", "modo": "cozinhar/branquear/fritar/refogar" },
+      { "parte": "Semente", "modo": "in natura" },
+      { "parte": "Broto", "modo": "cozinhar/branquear/fritar/refogar" }
+    ]
+  },
+  {
+    "id": 2,
+    "nome": "Serralha",
+    "nome_popular": ["Chicória-brava", "serralha-branca", "serralheira", "serralha-lisa", "ciumo"],
+    "nome_cientifico": "Sonchus oleraceus",
+    "familia_botanica": "Asteraceae",
+    "origem": "Nativa",
+    "habito_crescimento": "Herbácea",
+    "identificacao_botanica": "Caule: planta(s) de caule(s) herbáceo(s) glabro(s). Folha: folha(s) inferior(es) profundamente runcinada(s)/com lóbulo(s) dentado(s)/ápice(s) agudo(s) a(s) obtuso(s)/margem(ns) do limbo runcinada(s); folha(s) superior(es) com aurícula(s) aguda(s). Inflorescência: capítulo(s) em cima(s) corimbiforme(s) terminal(ais). Flor: flor(es) com lígula(s) amarela. Fruto: cipsela(s) transversalmente rugosa(s). ",
+    "img": "https://bs.plantnet.org/image/o/1db63c3b5e0d84f7738e4f15117ecc20858489e0",
+    "partes_comestiveis": [
+      { "parte": "Caule", "modo": "cozinhar/conserva" },
+      { "parte": "Folha", "modo": "in natura" },
+      { "parte": "Flor", "modo": "empanar" }
+    ]
+  },
+  {
+    "id": 3,
+    "nome": "Picão-Preto",
+    "nome_popular": ["Pico-pico", "amor-seco", "carrapicho-de-agulha", "coambi", "fura-capa"],
+    "nome_cientifico": "Bidens pilosa",
+    "familia_botanica": "Asteraceae",
+    "origem": "Exótica ",
+    "habito_crescimento": "Herbácea",
+    "identificacao_botanica": "Raiz: xilopódio ausente(s). Caule: indumento setoso(s)/pubescente(s)/glabrescente(s). Folha: pecíolo(s) peciolada(s); lâmina(s) inteira oval(ais)/tripartida(s) segmento(s) oval-lanceolada(s)/pinatifida(s) segmento(s) oval-lanceolada(s); margem(ns) serrilhada(s); indumento pubescente(s) em amba(s) a(s) face(s)/estrigoso(s) em amba(s) a(s) face(s)/glabrescente(s); textura membranácea(s). Inflorescência: capitulescência(s) cimeira(s) de capítulo(s)/laxa(s); capítulo(s) discoide(s)/radiado(s); comprimento das bráctea(s) bráctea-involucral(ais) externa(s) e interna(s) com cerca do mesmo comprimento/bráctea-involucral(ais) externa(s) menor que a(s) interna(s); bráctea(s) involucral(ais) externa(s) espatulada(s)/oblanceolada(s)/pubescente(s); bráctea(s) involucral(ais) interna(s) lanceolada(s)/oblongo(s) lanceada(s)/glabra(s)/tomentosa(s) no ápice(s); pálea(s) linear(es) lanceolada(s)/lanceada(s). Flor: cor da flor(es) flor(es) do disco amarela e flor(es) do raio branca; flor(es) do raio inconspícua(s)/ausente(s); limbo da flor(es) do disco cilíndrico(s). Fruto: formato linear(es)/oblongo(s)/curvado(s); indumento glabro(s)/tuberculado(s) setoso(s); pápus 2 aristado(s)/3 aristado(s)/4 aristado(s)/5 aristado(s); arista(s) do pápus ereta(s)/inclinada(s).",
+    "img": "https://inaturalist-open-data.s3.amazonaws.com/photos/4081752/large.JPG",
+    "partes_comestiveis": [
+      { "parte": "Folha", "modo": "in natura" }
+    ]
+  },
+  {
+    "id": 4,
+    "nome": "Ora-Pro-Nobis",
+    "nome_popular": ["Ora-pro-nobis-flor-branca", "lobrobo", "carne-de-pobre", "mata-velha", "guaiapá"],
+    "nome_cientifico": "Pereskia aculeata",
+    "familia_botanica": "Cactaceae",
+    "origem": "Nativa",
+    "habito_crescimento": "Trepadeira",
+    "identificacao_botanica": " Caule: aréola(s) com espinho(s) pareado(s) curvo(s). Folha: ápice(s) agudo(s); formato elíptica(s)/oval(ais); nervura(s) lateral(ais) em ângulo de 40 a(s) 60 graus. Inflorescência: flor(es) cimeira(s) mais de 10. Flor: aréola(s) do receptáculo sem cerda(s); cerda(s) estaminoidal(ais) ausente(s); corola rotácea(s); perianto(s) creme. Fruto: forma globoso(s). Semente: número 1 a(s) 5",
+    "img": "https://www.unirio.br/ccbs/ibio/herbariohuni/imagens/copy_of_PereskiaaculeataAlexandreMachado.jpg",
+    "partes_comestiveis": [
+      { "parte": "Folha", "modo": "in natura" },
+      { "parte": "Flor", "modo": "in natura" },
+      { "parte": "Fruto", "modo": "cozinhar" }
+    ]
+  },
+  {
+    "id": 5,
+    "nome": "Beldroegão",
+    "nome_popular": ["Major-gomes", "maria-gorda", "maria gomes", "bredo", "língua de vaca", "joão gomes"],
+    "nome_cientifico": "Talinum paniculatum",
+    "familia_botanica": "Talinaceae",
+    "origem": "Nativa",
+    "habito_crescimento": "Herbácea",
+    "identificacao_botanica": "Inflorescência: número de flor(es) mais de 50; pedúnculo(s) cilíndrico(s). Flor: estame(s) 10 a(s) 15. Fruto: sépala(s) caduca(s). Semente: semente(s) verrucosa(s). ",
+    "img": "https://galeria.ufsc.br/d/235947-1/Talinum+paniculatum+-+Foto_+Ana+Clara+Farias.jpg",
+    "partes_comestiveis": [
+      { "parte": "Folha", "modo": "cozinhar/refogar" },
+      { "parte": "Semente", "modo": "torrar" },
+      { "parte": "Broto", "modo": "in natura" }
+    ]
+  },
+  {
+    "id": 6,
+    "nome": "Jambu",
+    "nome_popular": ["Agrião-do-Pará", "agrião-do-norte", "agrião-do-Brasil", "abecedária"],
+    "nome_cientifico": "Acmella oleracea",
+    "familia_botanica": "Asteraceae",
+    "origem": "Exótica",
+    "habito_crescimento": "Herbácea",
+    "identificacao_botanica": "Erva anual. Ramos decumbentes a eretos, glabros. Folhas pecioladas, estreito aladas, lâmina amplo ovada a deltada, ápice agudo a curto acuminado, margem dentada, base truncada a curto atenuada, ambas faces glabras a esparso pilosas. Capítulos discóides, pedunculados. Invólucro 3-seriado, receptáculo com ápice agudo, páleas com ápice agudo, brácteas involucrais 15-18, herbáceas, margem inteira a sinuada, esparso ciliadas, externas 5-6, estreito ovadas a lanceoladas, ápice agudo, internas lanceoladas, ápice agudo. Flores 400-600, corola amarela, 5-mera. Cipsela moderado a denso ciliada, margem sem espessamento. Pápus com 2 cerdas subiguais.",
+    "img": "https://bs.plantnet.org/image/o/d68b3237410debeaa954e63a712030268432513a",
+    "partes_comestiveis": [
+      { "parte": "Folha", "modo": "in natura" },
+      { "parte": "Flor", "modo": "in natura" }
+    ]
+  },
+  {
+    "id": 7,
+    "nome": "Dente-de-Leão",
+    "nome_popular": ["Chicória-silvestre", "taraxaco", "abamargosa"],
+    "nome_cientifico": "Taraxacum officinale",
+    "familia_botanica": "Asteraceae",
+    "origem": "Exótica ",
+    "habito_crescimento": "Herbácea",
+    "identificacao_botanica": "Caule: caule(s) acaule. Folha: comprimento da lâmina(s) maior(es) que 20 cm; forma da lâmina(s) espatulada(s)/espatulada(s) runcinada(s); margem(ns) foliar(es) serreada(s)/duplamente serreada(s). Inflorescência: bráctea-involucral(ais) série externa(s) revoluta(s); tamanho do escapo maior(es) que 20 cm",
+    "img": "https://floradigital.ufsc.br/imagens/75891843934afe34f07dea15c1a64ca6765c.JPG",
+    "partes_comestiveis": [
+      { "parte": "Folha", "modo": "in natura" },
+      { "parte": "Flor", "modo": "fritar" }
+    ]
+  },
+  {
+    "id": 8,
+    "nome": "Crepe-do-Japão",
+    "nome_popular": ["Barba-de-falcão"],
+    "nome_cientifico": "Youngia japonica",
+    "familia_botanica": "Asteraceae",
+    "origem": "Exótica",
+    "habito_crescimento": "Herbácea",
+    "identificacao_botanica": "Ervas anuais ou bianuais, eretas, 15,0–57,0 cm de altura. Caules eretos de 1–6 com até 60,0 cm alt., ramificados na parte superior, delgados ou robustos, fistulosos, pilosos ou glabros. Folhas basais rosuladas, de 3,0–18,0 x 2,0–7,0 cm, oblanceoladas, lirado–pinnatífidas ou runcinadas, obtusas ou agudas no ápice e atenuadas na base, denticuladas na margem, glabras na superfície superior e tomentosas na inferior, especialmente nas nervuras; lóbulos laterais em número variável, gradualmente reduzidos em direção à base, às vezes nulos; pecíolos de 1,5 – 7,0 cm de compr., glabros, pilosos ou densamente pilosos; folhas caulinares escassas, semelhante as basais, gradualmente menores, frequentemente reduzidas a brácteas. Capítulos discoides, numerosos, eretos, pedunculados, dispostos em cimas corimbiformes, de 6,0–7,0 mm de alt., pedúnculos de até 3,0 mm de compr., filiformes; Invólucro de 4,0–7,0 mm de compr., cilíndrico antes da antese e campanulado após, glabros; brácteas involucrais em duas series, as externas de 1,0–5,0 mm de compr., triangulares a obovadas, agudas, margem membranosa; as internas de 6,0 mm de compr., lanceoladas, agudas, margem membranosa, tricomas curtos na parte interna, adpressos. Flores 15–20,perfeitas, pentadentadas, amarelas, 5,0–7,0 mm de compr.; receptáculo plano. Cipselas castanhas, 2,0–2,5 mm de compr., pouco comprimidas, fusiformes, ligeiramente atenuadas em direção ao ápice, 11–13 costelas, 2 mais proeminentes. Pápus branco, de 2,5–3,0 mm de compr",
+    "img": "https://bs.plantnet.org/image/o/d434527e13998c9cfe259c2be24e36d04bceb71e",
+    "partes_comestiveis": [
+      { "parte": "Folha", "modo": "in natura" }
+    ]
+  },
+  {
+    "id": 9,
+    "nome": "Capuchinha",
+    "nome_popular": ["Chaguinha", "capuchinha-grande", "mastruço-do-peru", "nastúrcio"],
+    "nome_cientifico": "Tropaeolum majus",
+    "familia_botanica": "Tropaeolaceae",
+    "origem": "Exótica",
+    "habito_crescimento": "Herbácea",
+    "identificacao_botanica": "Caule glabro. Folha simples, lâmina inteira 1,8–9 x 2–11,5 cm, orbicular, face abaxial pubescente. Flor com cálcar reto ou levemente curvado, 1,8–2,5cm de comprimento; cálice amarelo, sépalas lanceoladas, sépalas superiores 1,0–1,6 x 0,4–0,8cm, sépalas inferiores 1–1,8 x 0,4–0,8cm; corola laranja, amarela ou vermelha em diversas tonalidades, pétalas obovais, ápice arredondado.",
+    "img": "https://www.gardenia.net/laravel-filemanager/photos/shares/1846174993_39d4d7dbdf_zOptimized.jpg",
+    "partes_comestiveis": [
+      { "parte": "Caule", "modo": "cozinhar" },
+      { "parte": "Folha", "modo": "in natura" },
+      { "parte": "Flor", "modo": "in natura" },
+      { "parte": "Fruto", "modo": "conserva" },
+      { "parte": "Semente", "modo": "condimento" }
+    ]
+  },
+  {
+    "id": 10,
+    "nome": "Hibisco",
+    "nome_popular": ["Mimo-de-Vênus", "hibisco-da-China", "graxa-de-estudante", "papoula"],
+    "nome_cientifico": "Hibiscus rosa-sinensis",
+    "familia_botanica": "Malvaceae",
+    "origem": "Exótica",
+    "habito_crescimento": "Arbustiva",
+    "identificacao_botanica": "Arbustos de folha perene, de 1-3 m de altura. Ramos teretos, esparsamente estrelados e pilosos. Estípulas filiformes, 5-12 mm, pilosas; pecíolo 5-20 mm, viloso; lâmina foliar ampla ou estreitamente ovada, não lobada, 4-9 × 2-5 cm, papeada, pilosa nas nervuras apenas abaxialmente, base arredondada ou cuneiforme, margem dentada ou lobada, ápice acuminado. Flores solitárias, axilares nos ramos superiores, geralmente pendentes, simples ou duplas. Pedicelo 3-7 cm, esparsamente estrelado, piloso ou quase glabro, articulado perto do ápice. Lóbulos do epiciclo 6-7, filiformes, conados na base, 8-15 mm, esparsamente estrelados, de ápice obtuso ou agudo. Cálice campanulado, ca. 2 cm, estrelado puberulento, lóbulos 5, ovados a lanceolados. Corola vermelho-rosada, avermelhada ou amarelo-alaranjada, em forma de funil, 6-10 cm de diâmetro, frequentemente dupla; pétalas obovadas, pilosas abaxialmente, ápice arredondado. Coluna estaminal 4-8 cm, glabra. Ramos estilares 5. Cápsula ovoide, ca. 2,5 cm, glabra, ápice bicudo. Fl. durante todo o ano.",
+    "img": "https://www.picturethisai.com/wiki-image/1080/322524809552658432.jpeg",
+    "partes_comestiveis": [
+      { "parte": "Folha", "modo": "in natura" },
+      { "parte": "Flor", "modo": "in natura" }
+    ]
+  }
+]
