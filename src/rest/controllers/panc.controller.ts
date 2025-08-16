@@ -5,6 +5,22 @@ import roboflowService from '../../integration/roboflow/roboflow.service';
 import pancService from '../../services/panc.service';
 
 class PancController {
+
+	delete = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+		try {
+			const id = Number(req.params.id);
+
+			const deleted = await PancService.delete(id);
+
+			console.log("O deleted é ", deleted);
+
+			res.status(200).json();
+
+		} catch (err) {
+			next(err);
+		}
+	}
+
 	updateInfo = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
 			const id = Number(req.params.id);
@@ -121,7 +137,7 @@ class PancController {
 			let panc = pancService.findByName(nome_cientifico)
 
 			res.status(200).json(
-				panc 
+				panc
 			);
 		} catch (err: any) {
 			if (err.message.includes("Not Found")) {

@@ -5,6 +5,14 @@ import { BadRequestError, DuplicatedError, NotFoundError } from '../exceptions/e
 
 class PancService {
 
+  async delete(id: number): Promise<boolean> {
+    const deletedCount = await Panc.destroy({
+      where: { id }
+    });
+
+    return deletedCount > 0;
+  }
+
   async create(data: {
     nome: string;
     img: string;
@@ -78,11 +86,11 @@ class PancService {
     if (!name) throw new BadRequestError('Informe o nome');
 
     const panc = await Panc.findOne({
-		where: {
-			nome_cientifico: name
-		},  
-		include: ['nome_popular', 'partes_comestiveis'] 
-	});
+      where: {
+        nome_cientifico: name
+      },
+      include: ['nome_popular', 'partes_comestiveis']
+    });
 
     if (!panc) throw new NotFoundError('Panc não encontrada.');
 
@@ -103,6 +111,7 @@ class PancService {
     if (!pancs.length) throw new NotFoundError('Nenhuma Panc encontrada.');
     return pancs;
   }
+
 }
 
 export default new PancService();
