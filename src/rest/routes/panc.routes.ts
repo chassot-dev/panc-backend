@@ -1,8 +1,8 @@
 import express from 'express';
 import PancController from '../controllers/panc.controller';
 import { validateBody, validateParams } from '../middlewares/schema.middleware';
-import { pancUpdateSchema } from '../schemas/panc.schemas';
-import { idParamSchema } from '../schemas/basic.schemas';
+import { pancUpdateSchema } from '../../domain/schemas/panc.schemas';
+import { idParamSchema } from '../../domain/schemas/basic.schemas';
 
 const router = express.Router();
 const pancController = new PancController();

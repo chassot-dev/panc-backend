@@ -1,4 +1,4 @@
-import db from '../config/database';
+import db from '../../resources/database/config/database';
 import bcrypt from 'bcrypt';
 import { ResultSetHeader, RowDataPacket } from 'mysql2';
 

@@ -1,5 +1,5 @@
 import { ErrorRequestHandler } from 'express';
-import { BadRequestError, DuplicatedError, ForbiddenError, NotAllowedError, NotFoundError } from '../utils/errors';
+import { BadRequestError, DuplicatedError, ForbiddenError, NotAllowedError, NotFoundError } from '../../exceptions/errors';
 import { ZodError } from 'zod';
 
 export const errorHandler: ErrorRequestHandler = (err, req, res, next) => {

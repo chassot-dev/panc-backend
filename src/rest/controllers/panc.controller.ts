@@ -1,9 +1,9 @@
-import PancService from '../services/panc.service';
+import PancService from '../../services/panc.service';
 import { NextFunction, Request, Response } from 'express';
 import fs from "fs";
 import axios from "axios";
-import Panc from '../models/panc.model';
-import { NotFoundError } from '../utils/errors';
+import Panc from '../../domain/models/panc.model';
+import { NotFoundError } from '../../exceptions/errors';
 
 class PancController {
 

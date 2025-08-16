@@ -6,10 +6,10 @@ dotenv.config({ path: path.resolve(__dirname, '../.env') });
 import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from "cors";
 import morgan from 'morgan';
-import { patchTables } from './config/setup';
-import pancRouter from './routes/panc.routes';
-import { errorHandler } from './middlewares/error.middleware';
-import { apiKeyMiddleware } from './middlewares/apiKey.middleware';
+import { patchTables } from './resources/database/config/setup';
+import pancRouter from './rest/routes/panc.routes';
+import { errorHandler } from './rest/middlewares/error.middleware';
+import { apiKeyMiddleware } from './rest/middlewares/apiKey.middleware';
 
 
 const app: Application = express();

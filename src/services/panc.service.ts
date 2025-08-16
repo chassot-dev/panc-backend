@@ -1,8 +1,8 @@
-import Panc from '../models/panc.model';
+import Panc from '../domain/models/panc.model';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import { ENV } from '../config/env';
-import { BadRequestError, DuplicatedError, ForbiddenError, NotAllowedError, NotFoundError } from '../utils/errors';
+import { ENV } from '../resources/database/config/env';
+import { BadRequestError, DuplicatedError, ForbiddenError, NotAllowedError, NotFoundError } from '../exceptions/errors';
 
 class PancService {
 
