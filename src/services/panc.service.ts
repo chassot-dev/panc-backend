@@ -59,14 +59,14 @@ class PancService {
 
     if (data.nome_popular?.length) {
       await NomePopular.bulkCreate(
-        data.nome_popular.map(np => ({ ...np, pancId: id })),
+        data.nome_popular.map(np => ({ ...np, id_panc: id })),
         { updateOnDuplicate: ['nome'] }
       );
     }
 
     if (data.partes_comestiveis?.length) {
       await PartesComestiveis.bulkCreate(
-        data.partes_comestiveis.map(pc => ({ ...pc, pancId: id })),
+        data.partes_comestiveis.map(pc => ({ ...pc, id_panc: id })),
         { updateOnDuplicate: ['parte', 'modo'] }
       );
     }
