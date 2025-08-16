@@ -11,6 +11,10 @@ export const up = async (queryInterface: QueryInterface) => {
       type: DataTypes.STRING(150),
       allowNull: false,
     },
+    nome: {
+      type: DataTypes.STRING(150),
+      allowNull: false,
+    },
     familia_botanica: {
       type: DataTypes.STRING(150),
       allowNull: false,
@@ -20,11 +24,15 @@ export const up = async (queryInterface: QueryInterface) => {
       allowNull: false,
     },
     habito_crescimento: {
-      type: DataTypes.STRING(150),
+      type: DataTypes.STRING(250),
       allowNull: false,
     },
     identificacao_botanica: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(250),
+      allowNull: false,
+    },
+    img: {
+      type: DataTypes.STRING(400),
       allowNull: false,
     },
   });

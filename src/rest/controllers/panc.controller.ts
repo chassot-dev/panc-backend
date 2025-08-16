@@ -6,6 +6,8 @@ import pancService from '../../services/panc.service';
 
 class PancController {
 
+
+
 	updateInfo = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
 			const id = Number(req.params.id);
@@ -15,7 +17,9 @@ class PancController {
 				familia_botanica,
 				origem,
 				habito_crescimento,
-				identificacao_botanica
+				identificacao_botanica,
+				nome_popular,
+				partes_comestiveis
 			} = req.body;
 
 			const updatedPanc = await PancService.update(id, {
@@ -23,12 +27,51 @@ class PancController {
 				familia_botanica,
 				origem,
 				habito_crescimento,
-				identificacao_botanica
+				identificacao_botanica,
+				nome_popular,
+				partes_comestiveis
 			});
 
 			res.status(200).json({
 				message: 'Panc atualizada com sucesso!',
 				panc: updatedPanc
+			});
+
+		} catch (err) {
+			next(err);
+		}
+	}
+
+	create = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+		try {
+
+			const {
+				nome,
+				img,
+				nome_cientifico,
+				familia_botanica,
+				origem,
+				habito_crescimento,
+				identificacao_botanica,
+				nome_popular,
+				partes_comestiveis
+			} = req.body;
+
+			const panc = await PancService.create({
+				nome,
+				img,
+				nome_cientifico,
+				familia_botanica,
+				origem,
+				habito_crescimento,
+				identificacao_botanica,
+				nome_popular,
+				partes_comestiveis
+			});
+
+			res.status(200).json({
+				message: 'Panc atualizada com sucesso!',
+				panc: panc
 			});
 
 		} catch (err) {
@@ -56,7 +99,7 @@ class PancController {
 
 	getAll = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
-	
+
 			const pancs = await PancService.getAll();
 
 			res.status(200).json({
@@ -70,9 +113,9 @@ class PancController {
 	}
 	async detect(req: Request, res: Response) {
 		try {
-			
-			 const imageBase64 = req.file?.buffer.toString('base64');
-		
+
+			const imageBase64 = req.file?.buffer.toString('base64');
+
 			if (!imageBase64) {
 				return res.status(400).json({ error: "Nenhuma imagem enviada" });
 			}

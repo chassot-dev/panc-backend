@@ -38,6 +38,4 @@ NomePopular.init(
   }
 );
 
-NomePopular.belongsTo(Panc, { foreignKey: 'id_panc', as: 'panc' });
-
 export default NomePopular;

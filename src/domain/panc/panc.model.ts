@@ -6,15 +6,13 @@ import { sequelize } from '../../resources/db/connection';
 class Panc extends Model<PancAttributes, PancCreationAttributes>
   implements PancAttributes {
   public id!: number;
+  public nome!: string;
+  public img!: string;
   public nome_cientifico!: string;
   public familia_botanica!: string;
   public origem!: string;
   public habito_crescimento!: string;
   public identificacao_botanica!: string;
-
-  // timestamps
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
 }
 
 Panc.init(
@@ -25,6 +23,10 @@ Panc.init(
       primaryKey: true,
     },
     nome_cientifico: {
+      type: DataTypes.STRING(150),
+      allowNull: false,
+    },
+    nome: {
       type: DataTypes.STRING(150),
       allowNull: false,
     },
@@ -44,6 +46,10 @@ Panc.init(
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    img: {
+      type: DataTypes.STRING(400),
+      allowNull: false
+    }
   },
   {
     tableName: 'pancs',
@@ -51,5 +57,7 @@ Panc.init(
     timestamps: false,
   }
 );
+
+
 
 export default Panc;

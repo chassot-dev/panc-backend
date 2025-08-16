@@ -6,6 +6,8 @@ import { BadRequestError, DuplicatedError, NotFoundError } from '../exceptions/e
 class PancService {
 
   async create(data: {
+    nome: string;
+    img: string;
     nome_cientifico: string;
     familia_botanica: string;
     origem: string;
@@ -22,13 +24,13 @@ class PancService {
 
     if (data.nome_popular?.length) {
       await NomePopular.bulkCreate(
-        data.nome_popular.map(np => ({ ...np, pancId: panc.id }))
+        data.nome_popular.map(np => ({ ...np, id_panc: panc.id }))
       );
     }
 
     if (data.partes_comestiveis?.length) {
       await PartesComestiveis.bulkCreate(
-        data.partes_comestiveis.map(pc => ({ ...pc, pancId: panc.id }))
+        data.partes_comestiveis.map(pc => ({ ...pc, id_panc: panc.id }))
       );
     }
 

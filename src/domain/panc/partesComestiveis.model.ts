@@ -39,6 +39,4 @@ PartesComestiveis.init(
   }
 );
 
-PartesComestiveis.belongsTo(Panc, { foreignKey: 'id_panc', as: 'panc' });
-
 export default PartesComestiveis;

@@ -3,6 +3,7 @@ import path from 'path';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
+import './domain/panc';
 import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from "cors";
 import { runMigrations } from '../src/resources/db/migrate';
