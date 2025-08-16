@@ -5,6 +5,7 @@ dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from "cors";
+import { runMigrations } from '../src/resources/db/migrate';
 import morgan from 'morgan';
 import pancRouter from './rest/routes/panc.routes';
 import { errorHandler } from './rest/middlewares/error.middleware';
@@ -12,6 +13,8 @@ import { apiKeyMiddleware } from './rest/middlewares/apiKey.middleware';
 
 
 const app: Application = express();
+
+runMigrations();
 
 
 // Configurações do Express

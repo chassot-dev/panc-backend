@@ -1,7 +1,7 @@
 import { Umzug, SequelizeStorage } from 'umzug';
 import { sequelize } from './connection';
 
-const migrator = new Umzug({
+export const migrator = new Umzug({
   migrations: {
     glob: 'src/resources/db/migrations/*.ts',
     resolve: ({ name, path, context }) => {
@@ -21,8 +21,18 @@ const migrator = new Umzug({
 
 // Rodar migrations se chamar direto
 if (require.main === module) {
-  migrator.up().then(() => {
-    console.log('Migrations aplicadas com sucesso!');
-    process.exit(0);
-  });
+  (async () => {
+    try {
+      await migrator.up();
+      console.log('Migrations aplicadas com sucesso!');
+      process.exit(0);
+    } catch (err) {
+      console.error('Erro ao rodar migrations:', err);
+      process.exit(1);
+    }
+  })();
 }
+
+export const runMigrations = async () => {
+  await migrator.up();
+};
