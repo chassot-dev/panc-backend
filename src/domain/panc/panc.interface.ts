@@ -7,6 +7,8 @@ export interface PancAttributes {
   origem: string;
   habito_crescimento: string;
   identificacao_botanica: string;
+  nome_popular?: { nome: string }[];
+  partes_comestiveis?: { parte: string; modo: string }[];
 }
 
 export type PancCreationAttributes = Omit<PancAttributes, 'id'>;

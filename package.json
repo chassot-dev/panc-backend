@@ -6,7 +6,8 @@
 		"build": "tsc",
 		"start": "node dist/app.js",
 		"dev": "ts-node-dev src/app.ts",
-		"migrate": "ts-node src/db/migrate.ts"
+		"migrate": "ts-node src/resources/db/migrate.ts",
+		"seed": "ts-node src/resources/db/seed.ts"
 	},
 	"dependencies": {
 		"bcrypt": "^6.0.0",
