@@ -11,10 +11,12 @@ import morgan from 'morgan';
 import pancRouter from './rest/routes/panc.routes';
 import { errorHandler } from './rest/middlewares/error.middleware';
 import { apiKeyMiddleware } from './rest/middlewares/apiKey.middleware';
+import { runSeeders } from './resources/db/seed';
 
 const app: Application = express();
 
 runMigrations();
+runSeeders();
 
 app.use(morgan('dev'));
 app.use(express.json());
