@@ -12,5 +12,6 @@ router.post('/detect', upload.single('image'), (req, res, next) => { pancControl
 router.post('/', (req, res, next) => pancController.create(req, res, next));
 router.get('/:id', (req, res, next) => pancController.findById(req, res, next));
 router.put('/:id', (req, res, next) => pancController.updateInfo(req, res, next));
+router.delete('/:id', (req, res, next) => pancController.delete(req, res, next));
 
 export default router;

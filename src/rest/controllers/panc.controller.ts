@@ -6,6 +6,22 @@ import pancService from '../../services/panc.service';
 import { NotFoundError } from '../../exceptions/errors';
 
 class PancController {
+
+	delete = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+		try {
+			const id = Number(req.params.id);
+
+			const deleted = await PancService.delete(id);
+
+			console.log("O deleted é ", deleted);
+
+			res.status(200).json();
+
+		} catch (err) {
+			next(err);
+		}
+	}
+
 	updateInfo = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
 			const id = Number(req.params.id);
@@ -122,7 +138,7 @@ class PancController {
 			let panc = await pancService.findByName(nome_cientifico)
 
 			res.status(200).json(
-				panc 
+				panc
 			);
 		} catch (err: any) {
 		
