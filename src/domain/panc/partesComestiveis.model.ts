@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../db/connection';
+import { sequelize } from '../../resources/db/connection';
 import Panc from './panc.model';
-import { PartesComestiveisAttributes, PartesComestiveisCreationAttributes } from '../interfaces/IPartesComestiveis';
+import { PartesComestiveisAttributes, PartesComestiveisCreationAttributes } from '../panc/partesComestiveis.interface';
 
 class PartesComestiveis extends Model<PartesComestiveisAttributes, PartesComestiveisCreationAttributes>
   implements PartesComestiveisAttributes {
